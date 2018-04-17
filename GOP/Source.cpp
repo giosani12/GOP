@@ -6,6 +6,9 @@
 #include <ctime>
 using namespace std;
 
+ptPLAYER playerList = NULL;
+
+int NUMERO_GIOCATORI = 1;
 
 int main() {
 	int drop;
@@ -33,5 +36,8 @@ int main() {
 		cout << temp->deck.type << endl;
 		temp = temp->next;
 	}
+
+
+
 	cin >> drop;
 }
