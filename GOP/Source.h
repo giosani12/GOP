@@ -1,7 +1,6 @@
 struct FOO
 {
 	int type;
-
 };
 
 struct CARD

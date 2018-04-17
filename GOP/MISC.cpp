@@ -29,7 +29,7 @@ ptCard createDeck(int cards) {
 }
 
 
-void typeTranslate(int type) {
+/*void typeTranslate(int type) {
 	if ((type >= 0) && (type < 10)) {
 		function_0();
 	}
@@ -48,4 +48,4 @@ void typeTranslate(int type) {
 	else if ((type >= 90) && (type < 100)) {
 		function_5();
 	}
-}
+}*/

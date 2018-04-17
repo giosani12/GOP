@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TABLE_H_
+#define TABLE_H_
+
 class TABLE
 {
 private:
@@ -12,3 +14,4 @@ public:
 	void printTable();
 };
 
+#endif TABLE_H_

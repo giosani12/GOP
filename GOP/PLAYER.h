@@ -13,6 +13,7 @@ public:
 	PLAYER(int, char[]);
 	~PLAYER();
 	void Throw_Dice();
+	void setName();
 	void printPlayer();
 };
 #endif
