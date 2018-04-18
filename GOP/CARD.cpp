@@ -3,7 +3,7 @@
 #include <ctime>
 #include <cmath>
 #include "CARD.h"
-#include "PLAYER."
+#include "PLAYER.h"
 
 ptCard createDeck(int cards) {
 	ptCard deckIn = new CARD;
@@ -22,9 +22,9 @@ ptCard createDeck(int cards) {
 
 int randomCard() {
 	int value;
-
 	value = (rand() % 200) +1;
 	return value;
+}
 
 void drawCard(ptPlayer CURRENT, ptCard pt) {
 	//typeTranslate(pt->deck.type, input);
