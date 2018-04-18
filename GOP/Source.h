@@ -19,9 +19,7 @@ struct CARD
 typedef CARD* ptCard;
 
 
-int randomCard();
-ptCard createDeck(int);
-void drawCard(PLAYER, ptCard);
+
 void forwardByTwo(PLAYER);
 void forwardByOne(PLAYER);
 void backwardByTwo(PLAYER);

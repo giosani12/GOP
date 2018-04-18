@@ -8,7 +8,8 @@ Class GAME {
 	int NUMERO_GIOCATORI ;
 	
 	public:
-		GAME() ;
-}
+		GAME();
+		
+};
 
 #endif
