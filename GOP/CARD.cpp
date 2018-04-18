@@ -5,7 +5,7 @@
 #include "CARD.h"
 #include "PLAYER."
 
-ptCard createDeck(int cards) {
+ptCard CARD::createDeck(int cards) {
 	ptCard deckIn = new CARD;
 	ptCard tmp = deckIn;
 	srand((int)time(0));
@@ -20,13 +20,13 @@ ptCard createDeck(int cards) {
 	return deckIn;
 }
 
-int randomCard() {
+int CARD::randomCard() {
 	int value;
 
 	value = (rand() % 200) +1;
 	return value;
 
-void drawCard(ptPlayer CURRENT, ptCard pt) {
+void CARD::drawCard(ptPlayer CURRENT, ptCard pt) {
 	//typeTranslate(pt->deck.type, input);
 	pt = pt->next;
 }

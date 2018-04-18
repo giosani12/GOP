@@ -60,7 +60,7 @@ void PLAYER::setJmpTrn(bool set)
 	jumpTurn = set;
 }
 
-PLAYER * PLAYER::getFirst(ptPLAYER)
+ptPLAYER PLAYER::getFirst()
 {
 	int i = 0, count = 0;
 	char name[20];

@@ -50,14 +50,14 @@ void backwardByOne(PLAYER input) {
 
 
 
-void swapWithFirst(PLAYER  other) {
-	ptPLAYER *first = getFirst();
+void swapWithFirst() {
+	ptPLAYER *first = playerList->getFirst();
 	int temp = first[0]->position, i=0;
 	while (first[i] != NULL) {
 		first[i]->position = 1;
 		i++;
 	}
-	other.position = temp;
+	playerList->position = temp;
 	delete first;
 }
 

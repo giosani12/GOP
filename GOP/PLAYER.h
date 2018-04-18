@@ -20,7 +20,7 @@ public:
 	void printPlayer();
 	bool getJmpTrn();
 	void setJmpTrn(bool);
-	PLAYER* getFirst(ptPLAYER);
+	ptPLAYER getFirst();
 };
 
 
