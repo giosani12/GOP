@@ -20,14 +20,14 @@ typedef CARD* ptCard;
 
 
 
-void forwardByTwo(ptPLAYER);
-void forwardByOne(ptPLAYER);
-void backwardByTwo(ptPLAYER);
-void backwardByOne(ptPLAYER);
-void swapWithFirst(ptPLAYER);
-void backToStart(ptPLAYER);
-void jumpTurn(ptPLAYER);
-void doubleDice(ptPLAYER);
+void forwardByTwo(PLAYER);
+void forwardByOne(PLAYER);
+void backwardByTwo(PLAYER);
+void backwardByOne(PLAYER);
+void swapWithFirst(PLAYER);
+void backToStart(PLAYER);
+void jumpTurn(PLAYER);
+void doubleDice(PLAYER);
 //void typeTranslate(int, PLAYER);
 PLAYER* getFirst(ptPLAYER);
 void createPlayerList();
