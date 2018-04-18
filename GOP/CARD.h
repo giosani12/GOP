@@ -12,7 +12,7 @@ protected:
 public:
 	int randomCard();
 	ptCard createDeck(int);
-	void drawCard(PLAYER, ptCard);
+	void drawCard(ptPLAYER, ptCard);
 };
 
 #endif

@@ -3,7 +3,7 @@
 #include <ctime>
 #include <cmath>
 #include "CARD.h"
-#include "PLAYER."
+#include "PLAYER.h"
 
 ptCard CARD::createDeck(int cards) {
 	ptCard deckIn = new CARD;
@@ -23,10 +23,11 @@ ptCard CARD::createDeck(int cards) {
 int CARD::randomCard() {
 	int value;
 
-	value = (rand() % 200) +1;
+	value = (rand() % 200) + 1;
 	return value;
+}
 
-void CARD::drawCard(ptPlayer CURRENT, ptCard pt) {
+void CARD::drawCard(ptPLAYER CURRENT, ptCard pt) {
 	//typeTranslate(pt->deck.type, input);
 	pt = pt->next;
 }
