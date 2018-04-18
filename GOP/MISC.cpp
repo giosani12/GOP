@@ -32,26 +32,26 @@ extern int NUMERO_GIOCATORI;
 	}
 }*/
 
-void forwardByTwo(PLAYER input) {
+void forwardByTwo(ptPLAYER input) {
 	input.addToPosition(2);
 }
 
-void forwardByOne(PLAYER input) {
+void forwardByOne(ptPLAYER input) {
 	input.addToPosition(1);
 }
 
-void backwardByTwo(PLAYER input) {
+void backwardByTwo(ptPLAYER input) {
 	input.addToPosition(-2);
 }
 
-void backwardByOne(PLAYER input) {
+void backwardByOne(ptPLAYER input) {
 	input.addToPosition(-1);
 }
 
 
 
-void swapWithFirst() {
-	ptPLAYER *first = playerList->getFirst();
+void swapWithFirst(ptPLAYER  other) {
+	ptPLAYER *first = getFirst();
 	int temp = first[0]->position, i=0;
 	while (first[i] != NULL) {
 		first[i]->position = 1;
@@ -61,15 +61,15 @@ void swapWithFirst() {
 	delete first;
 }
 
-void backToStart(PLAYER loser) {
+void backToStart(ptPLAYER loser) {
 	loser.position = 1;
 }
 
-void jumpTurn(PLAYER input) {
+void jumpTurn(ptPLAYER input) {
 	input.setJmpTrn(true);
 }
 
-void doubleDice(PLAYER input) {
+void doubleDice(ptPLAYER input) {
 	input.Throw_Dice();
 }
 
