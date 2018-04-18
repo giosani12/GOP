@@ -5,7 +5,8 @@
 
 typedef CARD *ptCard;
 
-class CARD {
+class CARD : public GLOBAL
+{
 protected:
 	int type ;
 	CARD *next ;

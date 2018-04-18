@@ -4,7 +4,7 @@
 
 typedef PLAYER* ptPLAYER;
 
-class PLAYER 
+class PLAYER : public GLOBAL
 {
 protected:
 	bool jumpTurn;

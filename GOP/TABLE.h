@@ -1,7 +1,7 @@
 #ifndef TABLE_H_
 #define TABLE_H_
 
-class TABLE
+class TABLE : public GLOBAL
 {
 private:
 	int lenght;
