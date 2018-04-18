@@ -1,6 +1,7 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
+typedef PLAYER* ptPLAYER;
 
 class PLAYER 
 {
@@ -19,7 +20,8 @@ public:
 	void printPlayer();
 	bool getJmpTrn();
 	void setJmpTrn(bool);
-
+	PLAYER* getFirst(ptPLAYER);
 };
+
 
 #endif

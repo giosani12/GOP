@@ -2,13 +2,14 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-Class GAME {
-	protected:
+class GAME
+{
+protected:
 	ptPLAYER playerList ;
 	int NUMERO_GIOCATORI ;
 	
-	public:
+public:
 		GAME() ;
-}
+};
 
 #endif

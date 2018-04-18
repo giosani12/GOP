@@ -3,6 +3,7 @@
 #include <cstring>
 #include <ctime>
 #include "PLAYER.h"
+#include "GAME.h"
 using namespace std;
 
 int dice() {
@@ -57,4 +58,32 @@ bool PLAYER::getJmpTrn()
 void PLAYER::setJmpTrn(bool set)
 {
 	jumpTurn = set;
+}
+
+PLAYER * PLAYER::getFirst(ptPLAYER)
+{
+	int i = 0, count = 0;
+	char name[20];
+	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI], *tmp;
+	strcpy_s(name, playerList->name);
+	while ((name != playerList->name) || (count != 0)) {
+		if (count < playerList->position) {
+			count = playerList->position;
+			delete out;
+			i = 0;
+			out = new ptPLAYER[NUMERO_GIOCATORI];
+			out[0] = playerList;
+			i++;
+		}
+		else if (count == playerList->position) {
+			out[i] = playerList;
+			i++;
+		}
+		playerList = playerList->next;
+	}
+	out[i] = NULL;
+	tmp = new ptPLAYER[i];
+	for (i = 0; out[i] != NULL; i++) tmp[i] = out[i];
+	delete out;
+	return tmp;
 }

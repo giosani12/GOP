@@ -3,8 +3,6 @@
 
 using namespace std;
 
-typedef PLAYER* ptPLAYER;
-
 struct FOO
 {
 	int type;
@@ -31,7 +29,6 @@ void backToStart(PLAYER);
 void jumpTurn(PLAYER);
 void doubleDice(PLAYER);
 //void typeTranslate(int, PLAYER);
-PLAYER* getFirst(ptPLAYER);
 void createPlayerList();
 
 

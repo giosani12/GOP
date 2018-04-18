@@ -14,4 +14,4 @@ public:
 	void printTable();
 };
 
-#endif TABLE_H_
+#endif
