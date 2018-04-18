@@ -1,4 +1,5 @@
 #include "PLAYER.h"
+#include "GAME.h"
 #ifndef CARD_H_
 #define CARD_H_
 
