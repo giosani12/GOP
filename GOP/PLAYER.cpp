@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include "GLOBAL.h"
 #include "PLAYER.h"
 #include "GAME.h"
 using namespace std;

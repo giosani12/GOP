@@ -1,3 +1,4 @@
+#include "GLOBAL.h"
 #include "PLAYER.h"
 #include "TABLE.h"
 #include "Source.h"

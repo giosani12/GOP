@@ -30,6 +30,9 @@
     <ClInclude Include="CARD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GLOBAL.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TABLE.cpp">
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CARD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GLOBAL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
