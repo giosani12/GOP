@@ -10,27 +10,6 @@ using namespace std;
 extern ptPLAYER playerList;
 extern int NUMERO_GIOCATORI;
 
-int randomCard() {
-	int value;
-
-	value = rand() % 200;
-	return value;
-}
-
-ptCard createDeck(int cards) {
-	ptCard deckIn = new CARD;
-	ptCard tmp = deckIn;
-	srand((int)time(0));
-	for (int i = 0; i < cards; i++) {
-		tmp->deck.type = randomCard();
-		if (i < cards - 1) {
-			tmp->next = new CARD;
-			tmp = tmp->next;
-		}
-	}
-	tmp->next = deckIn;
-	return deckIn;
-}
 
 /*void typeTranslate(int type, PLAYER foo) {
 	if ((type >= 0) && (type < 10)) {
@@ -52,11 +31,6 @@ ptCard createDeck(int cards) {
 		backToStart();
 	}
 }*/
-
-void drawCard(PLAYER input, ptCard pt) {
-	//typeTranslate(pt->deck.type, input);
-	pt = pt->next;
-}
 
 void forwardByTwo(PLAYER input) {
 	input.addToPosition(2);
