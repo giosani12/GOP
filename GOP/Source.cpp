@@ -2,6 +2,7 @@
 #include "TABLE.h"
 #include "Source.h"
 #include "PLAYER.h"
+#include "CARD.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -27,18 +28,5 @@ int main() {
 			cout << "Casella invalida, inserire numero di casella valido" << endl;
 		}
 	}
-	ptCard temp=createDeck(3);
-	for (int i = 0; i < 30; i++) {
-
-		cout << temp->deck.type << "	";
-		temp = temp->next;
-		cout << temp->deck.type << "	";
-		temp = temp->next;
-		cout << temp->deck.type << endl;
-		temp = temp->next;
-	}
-
-
-
 	cin >> drop;
 }

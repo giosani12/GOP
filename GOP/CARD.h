@@ -1,9 +1,14 @@
-#include "PLAYER.h"
-#include "GAME.h"
 #ifndef CARD_H_
 #define CARD_H_
 
-typedef CARD *ptCard;
+class CARD;
+class PLAYER;
+
+typedef PLAYER* ptPLAYER;
+typedef CARD* ptCard;
+
+#include "GLOBAL.h"
+
 
 class CARD : public GLOBAL
 {
@@ -13,7 +18,7 @@ protected:
 		
 public:
 	int randomCard();
-	ptCard CARD(int);
+	CARD();
 	void drawCard(ptPLAYER, ptCard);
 };
 

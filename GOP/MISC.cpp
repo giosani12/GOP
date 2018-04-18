@@ -52,7 +52,7 @@ void backwardByOne(ptPLAYER input) {
 
 
 void swapWithFirst() {
-	ptPLAYER *first = playerList->getFirst();
+	ptPLAYER *first = (playerList->getFirst());
 	int temp = first[0]->position, i=0;
 	while (first[i] != NULL) {
 		first[i]->position = playerList->position;

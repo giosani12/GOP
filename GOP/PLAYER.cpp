@@ -7,7 +7,6 @@
 #include "GAME.h"
 using namespace std;
 
-class GAME;
 
 int dice() {
 	int value;
@@ -64,14 +63,14 @@ void PLAYER::setJmpTrn(bool set)
 	jumpTurn = set;
 }
 
-ptPLAYER PLAYER::getFirst()
+ptPLAYER * PLAYER::getFirst()
 {
 	int i = 0, count = 0;
 	char name[20];
 	ptPLAYER ptTMP = playerList;
 	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI], *tmp;
 	strcpy_s(name, playerList->name);
-	while ((name != playerList->name) || (count != 0)) {
+	while ((strcmp(name, playerList->name)) || (count != 0)) {
 		if (count < playerList->position) {
 			count = playerList->position;
 			delete out;

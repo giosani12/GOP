@@ -1,9 +1,11 @@
 #ifndef TABLE_H_
 #define TABLE_H_
 
+class GLOBAL;
+
 class TABLE : public GLOBAL
 {
-private:
+protected:
 	int lenght;
 	int pt[60];
 	bool valid;

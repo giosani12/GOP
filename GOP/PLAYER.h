@@ -1,6 +1,6 @@
-#include "GAME.h"
 #ifndef PLAYER_H_
 #define PLAYER_H_
+#include "GLOBAL.h"
 
 typedef PLAYER* ptPLAYER;
 
@@ -12,7 +12,7 @@ public:
 	int position;
 	int numero;
 	char name[20];
-	PLAYER * next;
+	ptPLAYER next;
 	PLAYER(int, char[]);
 	~PLAYER();
 	void Throw_Dice();
@@ -21,7 +21,7 @@ public:
 	void printPlayer();
 	bool getJmpTrn();
 	void setJmpTrn(bool);
-	ptPLAYER getFirst();
+	ptPLAYER* getFirst();
 };
 
 

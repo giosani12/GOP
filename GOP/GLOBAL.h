@@ -1,5 +1,8 @@
 #ifndef GLOBAL_H_
-#define GLOBAL_H
+#define GLOBAL_H_
+class PLAYER;
+typedef PLAYER* ptPLAYER;
+
 class GLOBAL
 {
 protected:

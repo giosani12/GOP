@@ -4,13 +4,14 @@
 #include <cmath>
 #include "CARD.h"
 #include "PLAYER.h"
+#include "GLOBAL.h"
 
 CARD::CARD() {
 	ptCard deckIn = new CARD;
 	ptCard tmp = deckIn;
 	for (int i = 0; i < 40; i++) {
-		tmp->deck.type = randomCard();
-		if (i < cards - 1) {
+		tmp->type = randomCard();
+		if (i < 39) {
 			tmp->next = new CARD;
 			tmp = tmp->next;
 		}
