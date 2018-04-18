@@ -3,7 +3,7 @@
 #include <ctime>
 #include <cmath>
 #include "CARD.h"
-#include "PLAYER."
+#include "PLAYER.h"
 
 ptCard createDeck(int cards) {
 	ptCard deckIn = new CARD;
