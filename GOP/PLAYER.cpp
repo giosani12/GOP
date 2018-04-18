@@ -2,9 +2,12 @@
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
+#include "GLOBAL.h"
 #include "PLAYER.h"
 #include "GAME.h"
 using namespace std;
+
+class GAME;
 
 int dice() {
 	int value;
@@ -12,6 +15,8 @@ int dice() {
 	value = (rand() % 6) + 1;
 	return value;
 }
+
+
 
 PLAYER::PLAYER(int num, char n[]) {
 	numero = num ;

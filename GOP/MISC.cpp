@@ -1,3 +1,4 @@
+#include "GLOBAL.h"
 #include "PLAYER.h"
 #include "TABLE.h"
 #include "Source.h"
@@ -54,7 +55,7 @@ void swapWithFirst() {
 	ptPLAYER *first = playerList->getFirst();
 	int temp = first[0]->position, i=0;
 	while (first[i] != NULL) {
-		first[i]->position = 1;
+		first[i]->position = playerList->position;
 		i++;
 	}
 	playerList->position = temp;
