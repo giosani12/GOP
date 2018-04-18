@@ -7,7 +7,6 @@
 using namespace std;
 
 int dice() {
-
 	int value;
 	srand((int)time(0));
 	value = (rand() % 6) + 1;
@@ -64,6 +63,7 @@ ptPLAYER PLAYER::getFirst()
 {
 	int i = 0, count = 0;
 	char name[20];
+	ptPLAYER ptTMP = playerList;
 	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI], *tmp;
 	strcpy_s(name, playerList->name);
 	while ((name != playerList->name) || (count != 0)) {
@@ -85,5 +85,6 @@ ptPLAYER PLAYER::getFirst()
 	tmp = new ptPLAYER[i];
 	for (i = 0; out[i] != NULL; i++) tmp[i] = out[i];
 	delete out;
+	playerList = ptTMP;
 	return tmp;
 }
