@@ -4,14 +4,14 @@
 using namespace std;
 
 
-void forwardByTwo(ptPLAYER);
-void forwardByOne(ptPLAYER);
-void backwardByTwo(ptPLAYER);
-void backwardByOne(ptPLAYER);
-void swapWithFirst(ptPLAYER);
-void backToStart(ptPLAYER);
-void jumpTurn(ptPLAYER);
-void doubleDice(ptPLAYER);
+void forwardByTwo();
+void forwardByOne();
+void backwardByTwo();
+void backwardByOne();
+void swapWithFirst();
+void backToStart();
+void jumpTurn();
+void doubleDice();
 //void typeTranslate(int, PLAYER);
 void createPlayerList();
 

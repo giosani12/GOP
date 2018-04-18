@@ -33,20 +33,20 @@ extern int NUMERO_GIOCATORI;
 	}
 }*/
 
-void forwardByTwo(ptPLAYER input) {
-	input->addToPosition(2);
+void forwardByTwo() {
+	playerList->addToPosition(2);
 }
 
-void forwardByOne(ptPLAYER input) {
-	input->addToPosition(1);
+void forwardByOne() {
+	playerList->addToPosition(1);
 }
 
-void backwardByTwo(ptPLAYER input) {
-	input->addToPosition(-2);
+void backwardByTwo() {
+	playerList->addToPosition(-2);
 }
 
-void backwardByOne(ptPLAYER input) {
-	input->addToPosition(-1);
+void backwardByOne() {
+	playerList->addToPosition(-1);
 }
 
 
@@ -62,16 +62,16 @@ void swapWithFirst() {
 	delete first;
 }
 
-void backToStart(ptPLAYER loser) {
-	loser->position = 1;
+void backToStart() {
+	playerList->position = 1;
 }
 
-void jumpTurn(ptPLAYER input) {
-	input->setJmpTrn(true);
+void jumpTurn() {
+	playerList->setJmpTrn(true);
 }
 
-void doubleDice(ptPLAYER input) {
-	input->Throw_Dice();
+void doubleDice() {
+	playerList->Throw_Dice();
 }
 
 void createPlayerList()
