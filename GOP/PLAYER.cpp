@@ -6,12 +6,16 @@
 #include "GAME.h"
 using namespace std;
 
+class GAME;
+
 int dice() {
 	int value;
 	srand((int)time(0));
 	value = (rand() % 6) + 1;
 	return value;
 }
+
+
 
 PLAYER::PLAYER(int num, char n[]) {
 	numero = num ;
