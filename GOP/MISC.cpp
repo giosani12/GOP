@@ -48,7 +48,7 @@ ptCard createDeck(int cards) {
 	else if ((type >= 80) && (type < 90)) {
 		swapWithFirst();
 	}
-	else if ((type >= 90) && (type < 100)) {
+	else if ((type >= 95) && (type < 100)) {
 		backToStart();
 	}
 }*/
