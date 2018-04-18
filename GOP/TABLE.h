@@ -2,6 +2,8 @@
 #define TABLE_H_
 
 class GLOBAL;
+class TABLE;
+typedef TABLE* ptTABLE;
 
 class TABLE : public GLOBAL
 {

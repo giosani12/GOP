@@ -12,8 +12,12 @@ void swapWithFirst();
 void backToStart();
 void jumpTurn();
 void doubleDice();
-//void typeTranslate(int, PLAYER);
-void createPlayerList();
+void typeTranslate(int);
+void createPlayerList(GLOBAL*);
+void drawCard(ptCard);
+void printPlayers(GLOBAL*);
+void init(GLOBAL*);
+
 
 
 int main();

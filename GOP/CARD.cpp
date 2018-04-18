@@ -5,6 +5,7 @@
 #include "CARD.h"
 #include "PLAYER.h"
 #include "GLOBAL.h"
+#include "Source.h"
 
 CARD::CARD() {
 	ptCard deckIn = new CARD;
@@ -23,9 +24,4 @@ int CARD::randomCard() {
 	int value;
 	value = (rand() % 200) + 1;
 	return value;
-}
-
-void CARD::drawCard(ptPLAYER CURRENT, ptCard pt) {
-	//typeTranslate(pt->deck.type, input);
-	pt = pt->next;
 }

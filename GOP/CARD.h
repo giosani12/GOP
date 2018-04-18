@@ -12,14 +12,11 @@ typedef CARD* ptCard;
 
 class CARD : public GLOBAL
 {
-protected:
-	int type ;
-	CARD *next ;
-		
 public:
+	CARD *next;
+	int type ;
 	int randomCard();
 	CARD();
-	void drawCard(ptPLAYER, ptCard);
 };
 
 #endif

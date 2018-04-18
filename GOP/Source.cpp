@@ -14,14 +14,18 @@ int NUMERO_GIOCATORI = 1;
 
 int main() {
 	int drop;
-	TABLE test = TABLE(60);
-	test.printTable();
+	GLOBAL *GLOB= new GLOBAL();
+	GLOB->ptTab = new TABLE(60);
+	createPlayerList(GLOB);
+	cin >> drop;
+	printPlayers(GLOB);
+	GLOB->ptTab->printTable();
 	drop = 0;
 	while (drop != 61) {
-		cout << "Inserisci numero casella ";
+		cout << "\nInserisci numero casella ";
 		cin >> drop;
 		if ((0 < drop) && (drop < 61)) {
-			cout << test.getType(drop) << endl;
+			cout << GLOB->ptTab->getType(drop) << endl;
 		}
 		else
 		{
