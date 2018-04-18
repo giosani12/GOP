@@ -11,7 +11,7 @@ protected:
 		
 public:
 	int randomCard();
-	ptCard createDeck(int);
+	ptCard CARD(int);
 	void drawCard(ptPLAYER, ptCard);
 };
 
