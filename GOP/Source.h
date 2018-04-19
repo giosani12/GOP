@@ -17,6 +17,7 @@ void createPlayerList(ptGLOBAL);
 void drawCard(ptCard);
 void printPlayers(ptGLOBAL);
 ptCard createDeck();
+void printChart(ptGLOBAL);
 void init(ptGLOBAL);
 
 
