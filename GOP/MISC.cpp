@@ -122,20 +122,36 @@ void drawCard(ptCard current)
 }
 
 void printPlayers(GLOBAL *glob) {
-	int drop;
-	cout << "+--------------------------+---+\n|Nome Giocatore     | Num|\n";
+	cout << "\n|Num\t|Pos\t|Name\n";
 	ptPLAYER tmp = glob->playerList;
 	while (glob->playerList->numero < glob->NUMERO_GIOCATORI) {
-		cout << "|" << glob->playerList->name << "\t\t|" << glob->playerList->numero << "\t|\n";
+		cout << "|" << glob->playerList->numero << "\t|"<< glob->playerList->position << "\t|" << glob->playerList->name << "\n";
 		glob->playerList = glob->playerList->next;
 	}
-	cout << "|" << glob->playerList->name << "\t\t|" << glob->playerList->numero << "\t|\n";
+	cout << "|" << glob->playerList->numero << "\t|" << glob->playerList->position << "\t|" << glob->playerList->name;
 	glob->playerList = tmp;
 }
 
+ptCard createDeck() {
+	ptCard deckIn = new CARD();
+	ptCard tmp = deckIn;
+	for (int i = 0; i < 40; i++) {
+		tmp->type = tmp->randomCard();
+		if (i < 39) {
+			tmp->next = new CARD();
+			tmp = tmp->next;
+		}
+	}
+	tmp->next = deckIn;
+	return deckIn;
+}
+
 void init(GLOBAL *start) {
-	start->ptTab = new TABLE(50);
+	start->ptTab = new TABLE(60);
 	createPlayerList(start);
+	start->playerList->Throw_Dice();
+	printPlayers(start);
 	start->ptTab->printTable();
-	start->ptDeck = new CARD();
+	start->ptDeck = createDeck();
+	cout << endl << start->NUMERO_GIOCATORI << " " << start->playerList << " " << start->ptDeck << " " << start->ptTab;
 }

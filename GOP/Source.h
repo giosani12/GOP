@@ -16,6 +16,7 @@ void typeTranslate(int);
 void createPlayerList(GLOBAL*);
 void drawCard(ptCard);
 void printPlayers(GLOBAL*);
+ptCard createDeck();
 void init(GLOBAL*);
 
 
