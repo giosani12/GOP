@@ -3,9 +3,11 @@
 class PLAYER;
 class CARD;
 class TABLE;
+class GLOBAL;
 typedef TABLE* ptTABLE;
 typedef PLAYER* ptPLAYER;
 typedef CARD* ptCard;
+typedef GLOBAL* ptGLOBAL;
 class GLOBAL
 {
 public:

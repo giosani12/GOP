@@ -14,7 +14,7 @@ int NUMERO_GIOCATORI = 1;
 
 int main() {
 	int drop;
-	GLOBAL *GLOB= new GLOBAL();
+	ptGLOBAL GLOB= new GLOBAL();
 	init(GLOB);
 	drop = 0;
 	while (drop != 61) {
