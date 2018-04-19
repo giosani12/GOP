@@ -18,7 +18,6 @@ public:
 	void Throw_Dice();
 	void setName(char[]);
 	void addToPosition(int);
-	void printPlayer();
 	bool getJmpTrn();
 	void setJmpTrn(bool);
 	ptPLAYER* getFirst();

@@ -13,10 +13,11 @@ void backToStart();
 void jumpTurn();
 void doubleDice();
 void typeTranslate(int);
-void createPlayerList(GLOBAL*);
+void createPlayerList(ptGLOBAL);
 void drawCard(ptCard);
-void printPlayers(GLOBAL*);
-void init(GLOBAL*);
+void printPlayers(ptGLOBAL);
+ptCard createDeck();
+void init(ptGLOBAL);
 
 
 

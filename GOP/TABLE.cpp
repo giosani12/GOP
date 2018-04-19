@@ -29,7 +29,7 @@ int TABLE::getType(int input)
 void TABLE::printTable()
 {
 	if (valid) {
-		cout << "Formato casella: |Numero Casella| Tipo Casella (vedi traduttore sottostante)|" << endl;
+		cout << "\nFormato casella: |Numero Casella| Tipo Casella (vedi traduttore sottostante)|" << endl;
 		cout << "+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+" << endl;
 		for (int j = 0;j<lenght; j++) {
 			cout << "|" << j+1 << "| " << pt[j] << "\t";

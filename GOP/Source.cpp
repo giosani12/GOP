@@ -14,11 +14,8 @@ int NUMERO_GIOCATORI = 1;
 
 int main() {
 	int drop;
-	GLOBAL *GLOB= new GLOBAL();
-	GLOB->ptTab = new TABLE(60);
-	createPlayerList(GLOB);
-	printPlayers(GLOB);
-	GLOB->ptTab->printTable();
+	ptGLOBAL GLOB= new GLOBAL();
+	init(GLOB);
 	drop = 0;
 	while (drop != 61) {
 		cout << "\nInserisci numero casella ";

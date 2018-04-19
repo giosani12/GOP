@@ -31,7 +31,9 @@ PLAYER::~PLAYER()
 
 
 void PLAYER::Throw_Dice() {
-	position = position + dice() ;
+	int j = dice();
+	position = position + j ;
+	cout << endl << name << " tira il dado ed esce " << j << ", ora " << name << " e\' in posizione " << position << ".";
 }
 
 void PLAYER::setName(char newName[])
@@ -48,10 +50,6 @@ void PLAYER::addToPosition(int num)
 	else position = 1;
 }
 
-void PLAYER::printPlayer()
-{
-
-}
 
 bool PLAYER::getJmpTrn()
 {
@@ -65,27 +63,27 @@ void PLAYER::setJmpTrn(bool set)
 
 ptPLAYER * PLAYER::getFirst()
 {
-	int i = 0, count = 0;
-	char name[20];
+	int i = 0, count = 0, j=0;
 	ptPLAYER ptTMP = playerList;
 	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI], *tmp;
-	strcpy_s(name, playerList->name);
-	while ((strcmp(name, playerList->name)) || (count != 0)) {
+	while (j<NUMERO_GIOCATORI) {
 		if (count < playerList->position) {
 			count = playerList->position;
 			delete out;
 			i = 0;
-			out = new ptPLAYER[NUMERO_GIOCATORI];
+			out = new ptPLAYER[NUMERO_GIOCATORI-j];
 			out[0] = playerList;
+			out[1] = NULL;
 			i++;
 		}
 		else if (count == playerList->position) {
 			out[i] = playerList;
 			i++;
+			out[i] = NULL;
 		}
 		playerList = playerList->next;
+		j++;
 	}
-	out[i] = NULL;
 	tmp = new ptPLAYER[i];
 	for (i = 0; out[i] != NULL; i++) tmp[i] = out[i];
 	delete out;
