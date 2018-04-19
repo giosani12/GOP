@@ -17,7 +17,6 @@ int main() {
 	GLOBAL *GLOB= new GLOBAL();
 	GLOB->ptTab = new TABLE(60);
 	createPlayerList(GLOB);
-	cin >> drop;
 	printPlayers(GLOB);
 	GLOB->ptTab->printTable();
 	drop = 0;
