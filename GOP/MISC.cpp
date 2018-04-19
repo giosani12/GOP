@@ -12,7 +12,6 @@ using namespace std;
 extern ptPLAYER playerList;
 extern int NUMERO_GIOCATORI;
 
-
 void typeTranslate(int type) {
 	if ((type >= 0) && (type < 15)) {
 		forwardByTwo();
@@ -138,4 +137,25 @@ void init(GLOBAL *start) {
 	createPlayerList(start);
 	start->ptTab->printTable();
 	start->ptDeck = new CARD();
+}
+
+void printChart (ptGLOBAL Players) {
+	ptPlayers tmp = Players->PlayerList ;
+	bool !found ;
+	int pos = 0 ;
+	for (int i = Players->ptTABLE->lenght ; i > 0; i --) {
+		for (int j = 0 ; j < Players->NUMERO_GIOCATORI; j ++) {
+			if ((i == Players->playerList->position) && !found)
+				{
+					pos = pos + 1 ;
+					cout << "\n|" << pos << "\t|" << Players->PlayerList->name ;
+					found = true ;
+				}
+				else if ((i == Players->playerList->position) && found) {
+					cout << "\n|" << pos << "\t|" << Players->PlayerList->name ;
+				}
+			Players = Players -> next ; 
+		}
+	found = false ;
+	}
 }
