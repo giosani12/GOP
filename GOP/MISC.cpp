@@ -82,7 +82,7 @@ void swapWithFirst() {
 }
 
 
-void createPlayerList(GLOBAL *glob)
+void createPlayerList(ptGLOBAL glob)
 {
 	int num=0, i=1;
 	char tmpName[20];
@@ -120,7 +120,7 @@ void drawCard(ptCard current)
 	current = current->next;
 }
 
-void printPlayers(GLOBAL *glob) {
+void printPlayers(ptGLOBAL glob) {
 	cout << "\n|Num\t|Pos\t|Name\n";
 	ptPLAYER tmp = glob->playerList;
 	while (glob->playerList->numero < glob->NUMERO_GIOCATORI) {
@@ -145,33 +145,36 @@ ptCard createDeck() {
 	return deckIn;
 }
 
-void init(GLOBAL *start) {
+void printChart(ptGLOBAL Players) {
+	ptPLAYER tmp = Players->playerList;
+	bool found = false;
+	int pos = 0;
+	cout << "\nCLASSIFICA:\n|Posizione\t|Nome Giocatore";
+	for (int i = Players->ptTab->lenght; i > 0; i--) {
+		
+		for (int j = 0; j<Players->NUMERO_GIOCATORI; j++) {
+			if ((i == Players->playerList->position) && !found)
+			{
+				pos = pos + 1;
+				cout << "\n|" << pos << "\t\t|" << Players->playerList->name;
+				found = true;
+			}
+			else if ((i == Players->playerList->position) && found)
+			{
+				cout << "\n|" << pos << "\t\t|" << Players->playerList->name;
+			}
+			Players->playerList = Players->playerList->next;
+		}
+		found = false;
+	}
+}
+
+void init(ptGLOBAL start) {
 	start->ptTab = new TABLE(60);
 	createPlayerList(start);
 	start->playerList->Throw_Dice();
 	printPlayers(start);
 	start->ptTab->printTable();
+	printChart(start);
 	start->ptDeck = createDeck();
-	cout << endl << start->NUMERO_GIOCATORI << " " << start->playerList << " " << start->ptDeck << " " << start->ptTab;
-}
-
-void printChart (ptGLOBAL Players) {
-	ptPlayers tmp = Players->PlayerList ;
-	bool !found ;
-	int pos = 0 ;
-	for (int i = Players->ptTABLE->lenght ; i > 0; i --) {
-		for (int j = 0 ; j < Players->NUMERO_GIOCATORI; j ++) {
-			if ((i == Players->playerList->position) && !found)
-				{
-					pos = pos + 1 ;
-					cout << "\n|" << pos << "\t|" << Players->PlayerList->name ;
-					found = true ;
-				}
-				else if ((i == Players->playerList->position) && found) {
-					cout << "\n|" << pos << "\t|" << Players->PlayerList->name ;
-				}
-			Players = Players -> next ; 
-		}
-	found = false ;
-	}
 }
