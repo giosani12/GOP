@@ -100,6 +100,19 @@ void GAME::printChart() {
 	}
 }
 
+void GAME::endGame(bool end) {
+	char loop ;
+	if ((playerList->position == ptTab->lenght) || end) {
+		ptTab->printTable() ;
+		playerList->printChart() ;
+		do {
+			cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N" ;
+			cin >> loop ;
+		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n') ;
+		if (loop == 'Y') firstTurn() ;
+	}
+}
+
 void GAME::init() {
 	ptTab = new TABLE(60);
 	createPlayerList();
@@ -112,6 +125,15 @@ void GAME::init() {
 
 void GAME::firstTurn()
 {
+	cout << "Questo e\' il gioco GOP per il progetto di programmazione\nInserire ora i dati per iniziare una partita:" << endl;
+	createPlayerList();
+	createDeck();
+	ptTab = new TABLE(rand());
+	playerList->Throw_Dice;
+	typeTranslate(ptTab->getType(playerList->position));
+	ptTab->printTable;
+	printChart;
+	nextTurn();
 }
 
 void GAME::nextTurn()
