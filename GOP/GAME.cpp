@@ -112,6 +112,15 @@ void GAME::init() {
 
 void GAME::firstTurn()
 {
+	cout << "Questo e\' il gioco GOP per il progetto di programmazione\nInserire ora i dati per iniziare una partita:" << endl;
+	createPlayerList();
+	createDeck();
+	ptTab = new TABLE(rand());
+	playerList->Throw_Dice;
+	typeTranslate(ptTab->getType(playerList->position));
+	ptTab->printTable;
+	printChart;
+	nextTurn();
 }
 
 void GAME::nextTurn()
