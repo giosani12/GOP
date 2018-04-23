@@ -18,6 +18,12 @@ public:
 	int NUMERO_GIOCATORI;
 	ptCard ptDeck;
 	ptTABLE ptTab;
-	GAME() ;
+	GAME();
+	void createPlayerList();
+	void drawCard();
+	void printPlayers();
+	void createDeck();
+	void printChart();
+	void init();
 };
 #endif

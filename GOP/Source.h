@@ -15,12 +15,7 @@ void jumpTurn();
 void doubleDice();
 void typeTranslate(int);
 
-void createPlayerList(ptGAME);
-void drawCard(ptCard);
-void printPlayers(ptGAME);
-ptCard createDeck();
-void printChart(ptGAME);
-void init(ptGAME);
+
 
 
 
