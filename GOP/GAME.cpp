@@ -100,6 +100,19 @@ void GAME::printChart() {
 	}
 }
 
+void GAME::endGame(bool end) {
+	char loop ;
+	if ((playerList->position == ptTab->lenght) || end) {
+		ptTab->printTable() ;
+		playerList->printChart() ;
+		do {
+			cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N" ;
+			cin >> loop ;
+		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n') ;
+		if (loop == 'Y') firstTurn() ;
+	}
+}
+
 void GAME::init() {
 	ptTab = new TABLE(60);
 	createPlayerList();
