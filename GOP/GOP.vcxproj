@@ -21,14 +21,13 @@
   <ItemGroup>
     <ClInclude Include="CARD.h" />
     <ClInclude Include="GAME.h" />
-    <ClInclude Include="GLOBAL.h" />
     <ClInclude Include="PLAYER.h" />
     <ClInclude Include="Source.h" />
     <ClInclude Include="TABLE.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CARD.cpp" />
-    <ClCompile Include="GLOBAL.cpp" />
+    <ClCompile Include="GAME.cpp" />
     <ClCompile Include="MISC.cpp" />
     <ClCompile Include="PLAYER.cpp" />
     <ClCompile Include="Source.cpp" />

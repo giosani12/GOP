@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include "PLAYER.h"
+#include "GAME.h"
 
 using namespace std;
 
@@ -13,12 +14,13 @@ void backToStart();
 void jumpTurn();
 void doubleDice();
 void typeTranslate(int);
-void createPlayerList(ptGLOBAL);
+
+void createPlayerList(ptGAME);
 void drawCard(ptCard);
-void printPlayers(ptGLOBAL);
+void printPlayers(ptGAME);
 ptCard createDeck();
-void printChart(ptGLOBAL);
-void init(ptGLOBAL);
+void printChart(ptGAME);
+void init(ptGAME);
 
 
 

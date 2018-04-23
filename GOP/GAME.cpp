@@ -1,11 +1,10 @@
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
+#include "GAME.h"
+#include "CARD.h"
+
 using namespace std;
 
-GAME() {
-	srand((int)time(0));
-	
-	CARD deck = CARD() ;
-
-	
+GAME::GAME() {	
 }

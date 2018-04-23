@@ -1,4 +1,4 @@
-#include "GLOBAL.h"
+#include "GAME.h"
 #include "PLAYER.h"
 #include "TABLE.h"
 #include "Source.h"
@@ -82,7 +82,7 @@ void swapWithFirst() {
 }
 
 
-void createPlayerList(ptGLOBAL glob)
+void createPlayerList(ptGAME glob)
 {
 	int num=0, i=1;
 	char tmpName[20];
@@ -120,7 +120,7 @@ void drawCard(ptCard current)
 	current = current->next;
 }
 
-void printPlayers(ptGLOBAL glob) {
+void printPlayers(ptGAME glob) {
 	cout << "\n|Num\t|Pos\t|Name\n";
 	ptPLAYER tmp = glob->playerList;
 	while (glob->playerList->numero < glob->NUMERO_GIOCATORI) {
@@ -145,7 +145,7 @@ ptCard createDeck() {
 	return deckIn;
 }
 
-void printChart(ptGLOBAL Players) {
+void printChart(ptGAME Players) {
 	ptPLAYER tmp = Players->playerList;
 	bool found = false;
 	int pos = 0;
@@ -169,7 +169,7 @@ void printChart(ptGLOBAL Players) {
 	}
 }
 
-void init(ptGLOBAL start) {
+void init(ptGAME start) {
 	start->ptTab = new TABLE(60);
 	createPlayerList(start);
 	start->playerList->Throw_Dice();

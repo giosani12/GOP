@@ -1,11 +1,11 @@
 #ifndef TABLE_H_
 #define TABLE_H_
 
-class GLOBAL;
+class GAME;
 class TABLE;
 typedef TABLE* ptTABLE;
 
-class TABLE : public GLOBAL
+class TABLE : public GAME
 {
 protected:
 	int pt[60];

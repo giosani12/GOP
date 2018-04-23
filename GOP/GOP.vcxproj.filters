@@ -30,9 +30,6 @@
     <ClInclude Include="CARD.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GLOBAL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TABLE.cpp">
@@ -50,7 +47,7 @@
     <ClCompile Include="CARD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GLOBAL.cpp">
+    <ClCompile Include="GAME.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

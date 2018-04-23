@@ -1,4 +1,4 @@
-#include "GLOBAL.h"
+#include "GAME.h"
 #include "TABLE.h"
 #include "Source.h"
 #include "PLAYER.h"
@@ -14,7 +14,7 @@ int NUMERO_GIOCATORI = 1;
 
 int main() {
 	int drop;
-	ptGLOBAL GLOB= new GLOBAL();
+	ptGAME GLOB= new GAME();
 	init(GLOB);
 	drop = 0;
 	while (drop != 61) {

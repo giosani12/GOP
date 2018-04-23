@@ -7,10 +7,10 @@ class PLAYER;
 typedef PLAYER* ptPLAYER;
 typedef CARD* ptCard;
 
-#include "GLOBAL.h"
+#include "GAME.h"
 
 
-class CARD : public GLOBAL
+class CARD : public GAME
 {
 public:
 	CARD *next;

@@ -1,10 +1,10 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
-#include "GLOBAL.h"
+#include "GAME.h"
 
 typedef PLAYER* ptPLAYER;
 
-class PLAYER : public GLOBAL
+class PLAYER : public GAME
 {
 protected:
 	bool jumpTurn;

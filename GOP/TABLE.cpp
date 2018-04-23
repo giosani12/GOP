@@ -1,4 +1,4 @@
-#include "GLOBAL.h"
+#include "GAME.h"
 #include "TABLE.h"
 #include <cstdlib>
 #include <iostream>
