@@ -27,6 +27,6 @@ public:
 	void init();
 	void firstTurn();
 	void nextTurn();
-	void endGame();
+	void endGame(bool);
 };
 #endif
