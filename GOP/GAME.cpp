@@ -116,6 +116,16 @@ void GAME::firstTurn()
 
 void GAME::nextTurn()
 {
+	playerList->Throw_Dice();
+	typeTranslate(ptTab->getType(playerList->position));
+	ptTab->printTable();
+	printChart();
+	drawCard();
+	GAME::nextTurn(playerList->next);
+	printChart();
+	
+	
+	
 }
 
 void GAME::endGame()
