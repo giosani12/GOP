@@ -15,8 +15,4 @@ void jumpTurn();
 void doubleDice();
 void typeTranslate(int);
 
-
-
-
-
 int main();

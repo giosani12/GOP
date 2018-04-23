@@ -109,3 +109,15 @@ void GAME::init() {
 	printChart();
 	createDeck();
 }
+
+void GAME::firstTurn()
+{
+}
+
+void GAME::nextTurn()
+{
+}
+
+void GAME::endGame()
+{
+}

@@ -25,5 +25,8 @@ public:
 	void createDeck();
 	void printChart();
 	void init();
+	void firstTurn();
+	void nextTurn();
+	void endGame();
 };
 #endif
