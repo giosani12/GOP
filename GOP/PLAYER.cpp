@@ -41,13 +41,13 @@ void PLAYER::setName(char newName[])
 	strcpy_s(name, newName);
 }
 
-void PLAYER::addToPosition(int num)
+/*void PLAYER::addToPosition(int num)
 {
 	if ((num + position) > 0) {
 		position = position + num;
 	}
 	else position = 1;
-}
+}*/
 
 
 bool PLAYER::getJmpTrn()

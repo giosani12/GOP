@@ -1,4 +1,4 @@
-#include <cstdlib>
+/*#include <cstdlib>
 #include "PLAYER.h"
 #include "GAME.h"
 
@@ -15,4 +15,4 @@ void jumpTurn();
 void doubleDice();
 void typeTranslate(int);
 
-int main();
+int main();*/

@@ -15,18 +15,6 @@ int NUMERO_GIOCATORI = 1;
 int main() {
 	int drop;
 	ptGAME GIOCO= new GAME();
-	GIOCO->init();
+	GIOCO->firstTurn();
 	drop = 0;
-	while (drop != 61) {
-		cout << "\nInserisci numero casella ";
-		cin >> drop;
-		if ((0 < drop) && (drop < 61)) {
-			cout << GIOCO->ptTab->getType(drop) << endl;
-		}
-		else
-		{
-			cout << "Casella invalida, inserire numero di casella valido" << endl;
-		}
-	}
-	cin >> drop;
 }

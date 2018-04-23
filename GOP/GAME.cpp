@@ -47,7 +47,7 @@ void GAME::createPlayerList()
 
 void GAME::drawCard()
 {
-	typeTranslate(ptDeck->type);
+	//typeTranslate(ptDeck->type);
 	ptDeck = ptDeck->next;
 }
 
@@ -80,34 +80,25 @@ void GAME::printChart() {
 	ptPLAYER tmp = playerList;
 	bool found = false;
 	int pos = 0;
-	cout << "\nCLASSIFICA:\n|Posizione\t|Nome Giocatore";
+	cout << "\nCLASSIFICA:\n|Posizione\t|Posizione in Tabella\t|Nome Giocatore";
 	for (int i = ptTab->lenght; i > 0; i--) {
 
 		for (int j = 0; j<NUMERO_GIOCATORI; j++) {
 			if ((i == playerList->position) && !found)
 			{
 				pos = pos + 1;
-				cout << "\n|" << pos << "\t\t|" << playerList->name;
+				cout << "\n|" << pos << "\t\t|" << playerList->position << "\t\t\t|" << playerList->name;
 				found = true;
 			}
 			else if ((i == playerList->position) && found)
 			{
-				cout << "\n|" << pos << "\t\t|" << playerList->name;
+				cout << "\n|" << pos << "\t\t|" << playerList->position << "\t\t\t|" << playerList->name;
 			}
 			playerList = playerList->next;
 		}
 		found = false;
 	}
-}
-
-void GAME::init() {
-	ptTab = new TABLE(60);
-	createPlayerList();
-	playerList->Throw_Dice();
-	printPlayers();
-	ptTab->printTable();
-	printChart();
-	createDeck();
+	cout << endl;
 }
 
 void GAME::firstTurn()
@@ -115,33 +106,38 @@ void GAME::firstTurn()
 	cout << "Questo e\' il gioco GOP per il progetto di programmazione\nInserire ora i dati per iniziare una partita:" << endl;
 	createPlayerList();
 	createDeck();
-	ptTab = new TABLE(rand());
-	playerList->Throw_Dice;
-	typeTranslate(ptTab->getType(playerList->position));
-	ptTab->printTable;
-	printChart;
+	ptTab = new TABLE(40);
+	playerList->Throw_Dice();
+	//typeTranslate(ptTab->getType(playerList->position));
+	ptTab->printTable();
+	printChart();
 	nextTurn();
 }
 
 void GAME::nextTurn()
 {
+	char loop;
 	playerList->Throw_Dice();
-	typeTranslate(ptTab->getType(playerList->position));
+	//typeTranslate(ptTab->getType(playerList->position));
 	ptTab->printTable();
 	printChart();
 	drawCard();
-	GAME::nextTurn(playerList->next);
-	printChart();
-	
-	
-	
+	if (playerList->position >= ptTab->lenght) endGame(false);
+	playerList = playerList->next;
+	cout << "Vuoi finire la partita?:";
+	do {
+		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N\n";
+		cin >> loop;
+	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
+	if ((loop == 'Y') || (loop == 'y')) endGame(true);
+	else GAME::nextTurn();
 }
 
 
 void GAME::endGame(bool end) 
 {
 	char loop;
-	if ((playerList->position == ptTab->lenght) || end) {
+	if (end) {
 		ptTab->printTable();
 		playerList->printChart();
 		do {
@@ -149,5 +145,9 @@ void GAME::endGame(bool end)
 			cin >> loop;
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 		if (loop == 'Y') firstTurn();
+	}
+	else if ((!end)&&(playerList->position>=ptTab->lenght)){
+		cout << "\nCongratualzioni " << playerList->name << " hai vinto la partita, ora suicidati\nOra non cliccare invio cosi\' sembra che funzioni bene\n";
+		cin >> loop;
 	}
 }
