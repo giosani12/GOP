@@ -9,8 +9,8 @@
 CARD::CARD() {
 }
 
-int CARD::randomCard() {
+int CARD::randomCard() {//Restituisce un 
 	int value;
-	value = (rand() % 200) + 1;
+	value = rand() % 8;
 	return value;
 }

@@ -13,7 +13,126 @@ GAME::GAME() {
 }
 
 
-void GAME::createPlayerList()
+void GAME::tabTypeTranslate() {
+	switch (ptTab->getType(playerList->position)) {
+	case 0:
+		forwardByOne();
+		cout << "\nIl giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
+		break;
+	case 1:
+		forwardByTwo();
+		cout << "\nIl giocatore " << playerList->name << " e\' andato avanti di due caselle e ora e\' in posizione " << playerList->position;
+		break;
+	case 2:
+		backwardByOne();
+		cout << "\nIl giocatore " << playerList->name << " e\' andato indietro di una casella e ora e\' in posizione " << playerList->position;
+		break;
+	case 3:
+		backwardByTwo();
+		cout << "\nIl giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
+		break;
+	case 4:
+		swapWithFirst();
+		cout << "\nIl gioactore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
+		break;
+	case 5:
+		backToStart();
+		cout << "\nIl giocatore " << playerList->name << " e\' tornato all'inizio ed ora e\' in posizione 1";
+		break;
+	case 6:
+		skipTurn();
+		cout << "\nIl giocatore " << playerList->name << " saltera\' il prossimo turno";
+		break;
+	case 7:
+		cout << "\nIl giocatore " << playerList->name << "tira due volte il dado";
+		doubleDice();
+		break;
+	default:
+		cout << "INTERNAL_ERROR -Prego allontanarsi dal computer ";
+	}
+}
+
+void GAME::cardTypeTranslate() {
+	switch (ptTab->getType(playerList->position)) {
+	case 0:
+		forwardByOne();
+		cout << "\nIl giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
+		break;
+	case 1:
+		forwardByTwo();
+		cout << "\nIl giocatore " << playerList->name << " e\' andato avanti di due caselle e ora e\' in posizione " << playerList->position;
+		break;
+	case 2:
+		backwardByOne();
+		cout << "\nIl giocatore " << playerList->name << " e\' andato indietro di una casella e ora e\' in posizione " << playerList->position;
+		break;
+	case 3:
+		backwardByTwo();
+		cout << "\nIl giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
+		break;
+	case 4:
+		swapWithFirst();
+		cout << "\nIl gioactore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
+		break;
+	case 5:
+		backToStart();
+		cout << "\nIl giocatore " << playerList->name << " e\' tornato all'inizio ed ora e\' in posizione 1";
+		break;
+	case 6:
+		skipTurn();
+		cout << "\nIl giocatore " << playerList->name << " saltera\' il prossimo turno";
+		break;
+	case 7:
+		cout << "\nIl giocatore " << playerList->name << "tira due volte il dado";
+		doubleDice();
+		break;
+	default:
+		cout << "INTERNAL_ERROR -Prego allontanarsi dal computer ";
+	}
+}
+
+void GAME::forwardByTwo() {
+	playerList->addToPosition(2);
+}
+
+void GAME::forwardByOne() {
+	playerList->position++;
+}
+
+void GAME::backwardByTwo() {
+	playerList->addToPosition(-2);
+}
+
+void GAME::backwardByOne() {
+	playerList->position--;
+}
+
+void GAME::doubleDice() {
+	playerList->Throw_Dice();
+}
+
+void GAME::backToStart() {
+	playerList->position = 1;
+}
+
+void GAME::skipTurn() {
+	playerList->setJmpTrn(true);
+}
+
+
+
+void GAME::swapWithFirst() {
+	ptPLAYER *first = (playerList->getFirst());
+	int temp = first[0]->position, i = 0;
+	while (first[i] != NULL) {
+		first[i]->position = playerList->position;
+		i++;
+	}
+	playerList->position = temp;
+	delete first;
+}
+
+void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori (lista circolare) prendendo da input numero e nome dei giocatori.
 {
 	int num = 0, i = 1;
 	char tmpName[20];
@@ -45,25 +164,25 @@ void GAME::createPlayerList()
 	playerList = ptHead;
 }
 
-void GAME::drawCard()
+void GAME::deletePlayerList()//Distrugge la lista di giocatori partendo dal puntatore al giocatore attuale
 {
-	//typeTranslate(ptDeck->type);
+	ptPLAYER tmp;
+	for (int i = 0; i < NUMERO_GIOCATORI; i++) {
+		tmp = playerList->next;
+		delete playerList;
+		playerList = tmp;
+	}
+}
+	
+
+
+void GAME::drawCard()//pesca una carta casuale dal mazzo e ne esegue l'effetto.
+{
+	cardTypeTranslate();
 	ptDeck = ptDeck->next;
 }
 
-
-void GAME::printPlayers() {
-	cout << "\n|Num\t|Pos\t|Name\n";
-	ptPLAYER tmp = playerList;
-	while (playerList->numero < NUMERO_GIOCATORI) {
-		cout << "|" << playerList->numero << "\t|" << playerList->position << "\t|" << playerList->name << "\n";
-		playerList = playerList->next;
-	}
-	cout << "|" << playerList->numero << "\t|" << playerList->position << "\t|" << playerList->name;
-	playerList = tmp;
-}
-
-void GAME::createDeck() {
+void GAME::createDeck() {//Crea lista circolare di carte con testa in ptDeck
 	ptDeck = new CARD();
 	ptCard tmp = ptDeck;
 	for (int i = 0; i < 40; i++) {
@@ -76,7 +195,18 @@ void GAME::createDeck() {
 	tmp->next = ptDeck;
 }
 
-void GAME::printChart() {
+void GAME::deleteDeck()//Distrugge la sovrastante
+{
+	ptCard tmp;
+	for (int i = 0; i < NUMERO_GIOCATORI; i++) {
+		tmp = ptDeck->next;
+		delete ptDeck;
+		ptDeck = tmp;
+	}
+}
+
+void GAME::printChart()//Stampa la lista dei giocatori ordinati per posizione in classifica con altre info utili
+{
 	ptPLAYER tmp = playerList;
 	bool found = false;
 	int pos = 0;
@@ -101,29 +231,29 @@ void GAME::printChart() {
 	cout << endl;
 }
 
-void GAME::firstTurn()
+void GAME::firstTurn()//Esegue routine del primo turno inizializzando tutte i puntatori a giocatori, mazzo e tabella
 {
 	cout << "Questo e\' il gioco GOP per il progetto di programmazione\nInserire ora i dati per iniziare una partita:" << endl;
 	createPlayerList();
 	createDeck();
 	ptTab = new TABLE(40);
 	playerList->Throw_Dice();
-	//typeTranslate(ptTab->getType(playerList->position));
+	tabTypeTranslate();
 	ptTab->printTable();
 	printChart();
 	nextTurn();
 }
 
-void GAME::nextTurn()
+void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possibilita\' di uscire o ricominciare
 {
 	char loop;
+	playerList = playerList->next;
 	playerList->Throw_Dice();
-	//typeTranslate(ptTab->getType(playerList->position));
+	tabTypeTranslate();
 	ptTab->printTable();
 	printChart();
 	drawCard();
 	if (playerList->position >= ptTab->lenght) endGame(false);
-	playerList = playerList->next;
 	cout << "Vuoi finire la partita?:";
 	do {
 		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N\n";
@@ -134,20 +264,23 @@ void GAME::nextTurn()
 }
 
 
-void GAME::endGame(bool end) 
+void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 {
 	char loop;
 	if (end) {
-		ptTab->printTable();
-		playerList->printChart();
+		cout << "La partita e\' terminata, consulta qua sotto la classifica finale per scoprire il vincitore\n";
+		printChart();
+		delete ptTab;
+		deleteDeck();
+		deletePlayerList();
 		do {
 			cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N";
 			cin >> loop;
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
-		if (loop == 'Y') firstTurn();
+		if ((loop == 'Y') || (loop == 'y')) firstTurn();
 	}
 	else if ((!end)&&(playerList->position>=ptTab->lenght)){
-		cout << "\nCongratualzioni " << playerList->name << " hai vinto la partita, ora suicidati\nOra non cliccare invio cosi\' sembra che funzioni bene\n";
+		cout << "\nCongratualzioni " << playerList->name << " hai vinto la partita\nOra non cliccare invio cosi\' sembra che funzioni bene\n";
 		cin >> loop;
 	}
 }

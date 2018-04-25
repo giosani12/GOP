@@ -13,6 +13,7 @@ public:
 	int numero;
 	char name[20];
 	ptPLAYER next;
+	PLAYER();
 	PLAYER(int, char[]);
 	~PLAYER();
 	void Throw_Dice();
