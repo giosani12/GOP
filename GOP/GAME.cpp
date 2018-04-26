@@ -342,8 +342,7 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 	if (!playerList->jumpTurn)
 	{
 		Throw_Dice();
-		if (playerList->position >= ptTab->lenght) endGame(true
-		);
+		if (playerList->position >= ptTab->lenght) endGame(true); //True quando il gioco finisce in modo normale
 		tabTypeTranslate();
 		if (playerList->position >= ptTab->lenght) endGame(true);
 		drawCard();
@@ -361,7 +360,7 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N\n";
 		cin >> loop;
 	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
-	if ((loop == 'Y') || (loop == 'y')) endGame(true);
+	if ((loop == 'Y') || (loop == 'y')) endGame(false); //False quando il gioco è interrotto dall'utente
 	else GAME::nextTurn();
 }
 
@@ -381,8 +380,16 @@ void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 		if ((loop == 'Y') || (loop == 'y')) firstTurn();
 	}
-	else if ((!end)&&(playerList->position>=ptTab->lenght)){
-		cout << "\nCongratualzioni " << playerList->name << " hai vinto la partita\nOra non cliccare invio cosi\' sembra che funzioni bene\n";
+	else if (!end){
+		cout << "\nLa partita e\' stata terminata, consulta qua sotto la classifica finale\n " ;
+		printChart();
+		delete ptTab;
+		deleteDeck();
+		deletePlayerList();
+		do {
+		cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N";
 		cin >> loop;
+		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
+		if ((loop == 'Y') || (loop == 'y')) firstTurn();
 	}
 }
