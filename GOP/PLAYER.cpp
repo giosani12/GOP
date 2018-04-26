@@ -65,32 +65,3 @@ void PLAYER::setJmpTrn(bool set)
 	jumpTurn = set;
 }
 
-ptPLAYER * PLAYER::getFirst()
-{
-	int i = 0, count = 0, j=0;
-	ptPLAYER ptTMP = playerList;
-	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI], *tmp;
-	while (j<NUMERO_GIOCATORI) {
-		if (count < playerList->position) {
-			count = playerList->position;
-			delete out;
-			i = 0;
-			out = new ptPLAYER[NUMERO_GIOCATORI-j];
-			out[0] = playerList;
-			out[1] = NULL;
-			i++;
-		}
-		else if (count == playerList->position) {
-			out[i] = playerList;
-			i++;
-			out[i] = NULL;
-		}
-		playerList = playerList->next;
-		j++;
-	}
-	tmp = new ptPLAYER[i];
-	for (i = 0; out[i] != NULL; i++) tmp[i] = out[i];
-	delete out;
-	playerList = ptTMP;
-	return tmp;
-}

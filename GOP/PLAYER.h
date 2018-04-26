@@ -21,7 +21,6 @@ public:
 	void addToPosition(int);
 	bool getJmpTrn();
 	void setJmpTrn(bool);
-	ptPLAYER* getFirst();
 };
 
 

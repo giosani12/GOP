@@ -25,6 +25,7 @@ public:
 	void forwardByOne();
 	void backwardByTwo();
 	void backwardByOne();
+	ptPLAYER* getFirst();
 	void swapWithFirst();
 	void backToStart();
 	void skipTurn();

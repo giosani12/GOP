@@ -119,6 +119,38 @@ void GAME::skipTurn() {
 	playerList->setJmpTrn(true);
 }
 
+ptPLAYER * GAME::getFirst()
+{
+	int i, counter = 0, j = 0;
+	bool found = false;
+	ptPLAYER ptTMP = playerList;
+	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI], *tmp;
+	for (i = ptTab->lenght; ((i > 0) || !found); i--)
+	{
+		for (int j = 0; j<NUMERO_GIOCATORI; j++)
+		{
+			if ((i == playerList->position) && !found)
+			{
+				out[0] = playerList;
+				found = true;
+				counter++;
+			}
+			else if ((i == playerList->position) && found)
+			{
+				out[counter] = playerList;
+				counter++;
+				out[counter] = NULL;
+			}
+			playerList = playerList->next;
+		}
+	}
+	tmp = new ptPLAYER[counter];
+	for (i = 0; out[i] != NULL; i++) tmp[i] = out[i];
+	tmp[i] = NULL;
+	delete out;
+	playerList = ptTMP;
+	return tmp;
+}
 
 
 void GAME::swapWithFirst() {
