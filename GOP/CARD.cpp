@@ -4,7 +4,6 @@
 #include <cmath>
 #include "CARD.h"
 #include "PLAYER.h"
-#include "Source.h"
 
 CARD::CARD() {
 }
