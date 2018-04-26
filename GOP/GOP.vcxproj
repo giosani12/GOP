@@ -22,7 +22,6 @@
     <ClInclude Include="CARD.h" />
     <ClInclude Include="GAME.h" />
     <ClInclude Include="PLAYER.h" />
-    <ClInclude Include="Source.h" />
     <ClInclude Include="TABLE.h" />
   </ItemGroup>
   <ItemGroup>

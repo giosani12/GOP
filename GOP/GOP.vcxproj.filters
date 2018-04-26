@@ -21,9 +21,6 @@
     <ClInclude Include="PLAYER.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GAME.h">
       <Filter>Header Files</Filter>
     </ClInclude>
