@@ -355,9 +355,9 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 	ptTab->printTable();
 	printChart();
 	if (playerList->position >= ptTab->lenght) endGame(true);
-	cout << "Vuoi finire la partita?:";
+	cout << "Vuoi finire la partita? ";
 	do {
-		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N\n";
+		cout << "Se vuoi finire la partita scrivi Y, se vuoi continuare scrivi N\n";
 		cin >> loop;
 	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 	if ((loop == 'Y') || (loop == 'y')) endGame(false); //False quando il gioco è interrotto dall'utente
@@ -369,7 +369,7 @@ void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 {
 	char loop;
 	if (end) {
-		cout << "\nLa partita e\' terminata, consulta qua sotto la classifica finale per scoprire il vincitore\n";
+		cout << "\nLa partita e\' terminata, consulta qua sotto la classifica finale per scoprire il vincitore";
 		printChart();
 		delete ptTab;
 		deleteDeck();
