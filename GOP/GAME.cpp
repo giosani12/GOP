@@ -31,28 +31,27 @@ void GAME::addToPosition(int num)
 void GAME::tabTypeTranslate() {
 	switch (ptTab->getType(playerList->position)) {
 	case 0:
+		cout << "\nEffetto casella: casella vuota!";
+		break;
+	case 1:
 		forwardByOne();
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
 		break;
-	case 1:
+	case 2:
 		forwardByTwo();
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato avanti di due caselle e ora e\' in posizione " << playerList->position;
 		break;
-	case 2:
+	case 3:
 		backwardByOne();
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato indietro di una casella e ora e\' in posizione " << playerList->position;
 		break;
-	case 3:
+	case 4:
 		backwardByTwo();
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
 		break;
-	case 4:
-		//swapWithFirst();
-		cout << "\nEffetto casella: il giocatore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
-		break;
 	case 5:
-		backToStart();
-		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' tornato all'inizio ed ora e\' in posizione 1";
+		swapWithFirst();
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
 		break;
 	case 6:
 		skipTurn();
@@ -62,13 +61,48 @@ void GAME::tabTypeTranslate() {
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " tira due volte il dado";
 		doubleDice();
 		break;
+	case 8:
+		backToStart();
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' tornato all'inizio ed ora e\' in posizione 1";
+		break;
+	case 9:
+		cout << "\nEffetto casella: casella vuota!";
+		break;
+	case 10:
+		forwardByOne();
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
+		break;
+	case 11:
+		forwardByTwo();
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato avanti di due caselle e ora e\' in posizione " << playerList->position;
+		break;
+	case 12:
+		backwardByOne();
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato indietro di una casella e ora e\' in posizione " << playerList->position;
+		break;
+	case 13:
+		backwardByTwo();
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
+		break;
+	case 14:
+		swapWithFirst();
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
+		break;
+	case 15:
+		skipTurn();
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " saltera\' il prossimo turno";
+		break;
+	case 16:
+		cout << "\nEffetto casella: il giocatore " << playerList->name << " tira due volte il dado";
+		doubleDice();
+		break;
 	default:
 		cout << "INTERNAL_ERROR -Prego allontanarsi dal computer ";
 	}
 }
 
 void GAME::cardTypeTranslate() {
-	switch (/*4*/ptTab->getType(playerList->position)) {
+	switch (ptTab->getType(playerList->position)) {
 	case 0:
 		forwardByOne();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
@@ -86,7 +120,7 @@ void GAME::cardTypeTranslate() {
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
 		break;
 	case 4:
-		//swapWithFirst();
+		swapWithFirst();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
 		break;
 	case 5:
@@ -139,8 +173,8 @@ ptPLAYER * GAME::getFirst()
 	int i, counter = 0, j = 0;
 	bool found = false;
 	ptPLAYER ptTMP = playerList;
-	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI], *tmp;
-	for (i = ptTab->lenght; ((i > 0) || !found); i--)
+	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI+1], *tmp;
+	for (i = ptTab->lenght; ((i > 0) && !found); i--)
 	{
 		for (int j = 0; j<NUMERO_GIOCATORI; j++)
 		{
@@ -170,14 +204,14 @@ ptPLAYER * GAME::getFirst()
 
 
 void GAME::swapWithFirst() {
-	ptPLAYER *first = getFirst();
+	ptPLAYER *first;
+	first= getFirst();
 	int temp = first[0]->position, i = 0;
 	while (first[i] != NULL) {
 		first[i]->position = playerList->position;
 		i++;
 	}
 	playerList->position = temp;
-	delete first;
 }
 
 void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori (lista circolare) prendendo da input numero e nome dei giocatori.

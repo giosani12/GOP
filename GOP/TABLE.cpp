@@ -13,9 +13,9 @@ TABLE::TABLE(int input)
 	valid = true;
 	pt = new int[lenght];
 	for (int i = 0; i < lenght-1; i++) {
-		pt[i] = rand() %8;
+		pt[i] = rand() %17;
 	}
-	pt[lenght - 1] = 4;
+	pt[lenght - 1] = 0;
 }
 
 TABLE::~TABLE()
@@ -25,7 +25,8 @@ TABLE::~TABLE()
 
 int TABLE::getType(int input)
 {
-	return pt[input-1];
+	if ((input >= 0) && (input < lenght))	return pt[input - 1];
+	else return 8;
 }
 
 void TABLE::printTable()
@@ -34,7 +35,7 @@ void TABLE::printTable()
 		cout << "\nFormato casella: |Numero Casella| Tipo Casella (vedi traduttore sottostante)|" << endl;
 		cout << "+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+" << endl;
 		for (int j = 0;j<lenght; j++) {
-			cout << "|" << j+1 << "| " << pt[j] << "\t";
+			cout << "|" << j+1 << "| " << pt[j]%9 << "\t";
 			if ((j+1) % 10 == 0) {
 				cout << "|" << endl << "+-------+-------+-------+-------+-------+-------+-------+-------+-------+-------+"<< endl;
 			}

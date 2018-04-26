@@ -1,7 +1,7 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 #include "GAME.h"
-
+class PLAYER;
 typedef PLAYER* ptPLAYER;
 
 class PLAYER : public GAME
@@ -19,6 +19,4 @@ public:
 	bool getJmpTrn();
 	void setJmpTrn(bool);
 };
-
-
 #endif
