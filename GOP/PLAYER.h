@@ -6,9 +6,8 @@ typedef PLAYER* ptPLAYER;
 
 class PLAYER : public GAME
 {
-protected:
-	bool jumpTurn;
 public:
+	bool jumpTurn;
 	int position;
 	int numero;
 	char name[20];
@@ -16,9 +15,7 @@ public:
 	PLAYER();
 	PLAYER(int, char[]);
 	~PLAYER();
-	void Throw_Dice();
 	void setName(char[]);
-	void addToPosition(int);
 	bool getJmpTrn();
 	void setJmpTrn(bool);
 };

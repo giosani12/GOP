@@ -11,9 +11,11 @@ TABLE::TABLE(int input)
 {
 	lenght = input;
 	valid = true;
-	for (int i = 0; i < lenght; i++) {
+	pt = new int[lenght];
+	for (int i = 0; i < lenght-1; i++) {
 		pt[i] = rand() %8;
 	}
+	pt[lenght - 1] = 4;
 }
 
 TABLE::~TABLE()

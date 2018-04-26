@@ -8,7 +8,7 @@ typedef TABLE* ptTABLE;
 class TABLE : public GAME
 {
 protected:
-	int pt[60];
+	int *pt;
 	bool valid;
 public:
 	int lenght;

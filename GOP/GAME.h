@@ -19,6 +19,8 @@ public:
 	ptCard ptDeck;
 	ptTABLE ptTab;
 	GAME();
+	void addToPosition(int);
+	void Throw_Dice();
 	void tabTypeTranslate();
 	void cardTypeTranslate();
 	void forwardByTwo();
