@@ -112,34 +112,31 @@ void GAME::tabTypeTranslate() {
 void GAME::cardTypeTranslate() {
 	switch (ptDeck->type) {
 	case 0:
-		cout << "\nEffetto carta: casella vuota!";
-		break;
-	case 1:
 		forwardByOne();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
 		break;
-	case 2:
+	case 1:
 		forwardByTwo();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato avanti di due caselle e ora e\' in posizione " << playerList->position;
 		break;
-	case 3:
+	case 2:
 		backwardByOne();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato indietro di una casella e ora e\' in posizione " << playerList->position;
 		break;
-	case 4:
+	case 3:
 		backwardByTwo();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
 		break;
-	case 5:
+	case 4:
 		swapWithFirst();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
 		break;
-	case 6:
+	case 5:
 		skipTurn();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " saltera\' il prossimo turno";
 		break;
-	case 7:
-		cout << "\nEffetto carta: il giocatore " << playerList->name << " tira due volte il dado";
+	case 6:
+		cout << "\nEffetto carta: il giocatore " << playerList->name << " tira di nuovo il dado";
 		doubleDice();
 		break;
 	default:
@@ -251,7 +248,6 @@ void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori 
 		i++;
 	}
 	playerList->next = ptHead;
-	playerList = ptHead;
 }
 
 void GAME::deletePlayerList()//Distrugge la lista di giocatori partendo dal puntatore al giocatore attuale
@@ -327,11 +323,6 @@ void GAME::firstTurn()//Esegue routine del primo turno inizializzando tutte i pu
 	createPlayerList();
 	createDeck();
 	ptTab = new TABLE(rand() % 40 + 40);
-	Throw_Dice();
-	tabTypeTranslate();
-	drawCard();
-	ptTab->printTable();
-	printChart();
 	nextTurn();
 }
 

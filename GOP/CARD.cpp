@@ -10,6 +10,6 @@ CARD::CARD() {
 
 int CARD::randomCard() {//Restituisce un 
 	int value;
-	value = rand() % 8;
+	value = rand() % 7;
 	return value;
 }
