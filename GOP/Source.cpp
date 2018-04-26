@@ -8,7 +8,7 @@
 using namespace std;
 
 int main() {//main
-	srand(time(NULL));
+	srand((unsigned int)time(NULL));
 	ptGAME GIOCO= new GAME();
 	GIOCO->firstTurn();
 }
