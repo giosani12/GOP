@@ -1,8 +1,10 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
-#include "GAME.h"
+
 class PLAYER;
 typedef PLAYER* ptPLAYER;
+
+#include "GAME.h"
 
 class PLAYER : public GAME
 {
@@ -16,7 +18,5 @@ public:
 	PLAYER(int, char[]);
 	~PLAYER();
 	void setName(char[]);
-	bool getJmpTrn();
-	void setJmpTrn(bool);
 };
 #endif

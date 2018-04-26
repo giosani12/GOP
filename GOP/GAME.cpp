@@ -11,14 +11,15 @@ using namespace std;
 GAME::GAME() {
 }
 
-void GAME::Throw_Dice() {
+void GAME::Throw_Dice()//funzione del lancio dado
+{
 	int j = (rand() % 6) + 1;
 	playerList->position = playerList->position + j;
 	if (playerList->position > ptTab->lenght) playerList->position = ptTab->lenght;
 	cout << endl << playerList->name << " tira il dado ed esce " << j << ", ora " << playerList->name << " e\' in posizione " << playerList->position << ".";
 }
 
-void GAME::addToPosition(int num)
+void GAME::addToPosition(int num)//funzione utile per gli effetti di movimento sulla tabella, somma alla posione del giocatore il numero in input
 {
 	if ((num + playerList->position) > 0) {
 		playerList->position = playerList->position + num;
@@ -28,7 +29,8 @@ void GAME::addToPosition(int num)
 }
 
 
-void GAME::tabTypeTranslate() {
+void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
+{
 	switch (ptTab->getType(playerList->position)) {
 	case 0:
 		cout << "\nEffetto casella: casella vuota!";
@@ -59,7 +61,7 @@ void GAME::tabTypeTranslate() {
 		break;
 	case 7:
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " tira due volte il dado";
-		doubleDice();
+		Throw_Dice();
 		break;
 	case 8:
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " pesca una carta.";
@@ -98,7 +100,7 @@ void GAME::tabTypeTranslate() {
 		break;
 	case 17:
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " tira due volte il dado";
-		doubleDice();
+		Throw_Dice();
 		break;
 	case 18:
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " pesca una carta.";
@@ -109,7 +111,8 @@ void GAME::tabTypeTranslate() {
 	}
 }
 
-void GAME::cardTypeTranslate() {
+void GAME::cardTypeTranslate()//chiamante per gli effetti del mazzo di carte
+{
 	switch (ptDeck->type) {
 	case 0:
 		forwardByOne();
@@ -137,7 +140,7 @@ void GAME::cardTypeTranslate() {
 		break;
 	case 6:
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " tira di nuovo il dado";
-		doubleDice();
+		Throw_Dice();
 		break;
 	default:
 		cout << "INTERNAL_ERROR -Prego allontanarsi dal computer ";
@@ -145,35 +148,37 @@ void GAME::cardTypeTranslate() {
 	ptDeck = ptDeck->next;
 }
 
-void GAME::forwardByTwo() {
+void GAME::forwardByTwo()//avanti di due
+{
 	addToPosition(2);
 }
 
-void GAME::forwardByOne() {
+void GAME::forwardByOne()//avanti di uno
+{
 	addToPosition(1);
 }
 
-void GAME::backwardByTwo() {
+void GAME::backwardByTwo()//indietro di due
+{
 	addToPosition(-2);
 }
 
-void GAME::backwardByOne() {
+void GAME::backwardByOne()//indietro di uno
+{
 	addToPosition(-1);
 }
 
-void GAME::doubleDice() {
-	Throw_Dice();
-}
-
-void GAME::backToStart() {
+void GAME::backToStart()//effetto molto destabilizzante che reimposta la posizione del giocatore a 1
+{
 	playerList->position = 1;
 }
 
-void GAME::skipTurn() {
+void GAME::skipTurn()//salta il prossimo turno
+{
 	playerList->jumpTurn = true;
 }
 
-ptPLAYER * GAME::getFirst()
+ptPLAYER * GAME::getFirst()//funzione che restituisce un array di puntatori al (o ai) giocatore primo in classifica 
 {
 	int i, counter = 0, j = 0;
 	bool found = false;
@@ -208,7 +213,8 @@ ptPLAYER * GAME::getFirst()
 }
 
 
-void GAME::swapWithFirst() {
+void GAME::swapWithFirst()//scambia la posizione del giocatore corrente con il primo e viceversa (funziona anche con più giocatori a pari merito)
+{
 	ptPLAYER *first;
 	first= getFirst();
 	int temp = first[0]->position, i = 0;
@@ -268,7 +274,8 @@ void GAME::drawCard()//pesca una carta casuale dal mazzo e ne esegue l'effetto.
 	ptDeck = ptDeck->next;
 }
 
-void GAME::createDeck() {//Crea lista circolare di carte con testa in ptDeck
+void GAME::createDeck()//Crea lista circolare di carte con testa in ptDeck
+{
 	ptDeck = new CARD();
 	ptCard tmp = ptDeck;
 	for (int i = 0; i < 40; i++) {

@@ -4,10 +4,7 @@
 #include <iostream>
 using namespace std;
 
-
-
-
-TABLE::TABLE(int input)
+TABLE::TABLE(int input)//costruttore tabella, inizializza tutti i campi e prende in input la lunghezza
 {
 	lenght = input;
 	valid = true;
@@ -23,13 +20,13 @@ TABLE::~TABLE()
 	valid = false;
 }
 
-int TABLE::getType(int input)
+int TABLE::getType(int input)//traduttore da numero casella a tipo di casella
 {
 	if ((input >= 0) && (input < lenght))	return pt[input - 1];
 	else return 8;
 }
 
-void TABLE::printTable()
+void TABLE::printTable()//stampa la tabella
 {
 	if (valid) {
 		cout << "\nFormato casella: |Numero Casella| Tipo Casella (vedi traduttore sottostante)|" << endl;

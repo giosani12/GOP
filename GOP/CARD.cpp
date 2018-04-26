@@ -8,7 +8,8 @@
 CARD::CARD() {
 }
 
-int CARD::randomCard() {//Restituisce un 
+int CARD::randomCard()//Restituisce un numero casuale da 0 a 6, usata per riempire la struttura mazzo
+{
 	int value;
 	value = rand() % 7;
 	return value;

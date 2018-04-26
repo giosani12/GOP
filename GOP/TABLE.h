@@ -17,5 +17,4 @@ public:
 	int getType(int);
 	void printTable();
 };
-
 #endif

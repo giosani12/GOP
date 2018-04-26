@@ -13,7 +13,8 @@ PLAYER::PLAYER()
 }
 
 
-PLAYER::PLAYER(int num, char n[]) {
+PLAYER::PLAYER(int num, char n[])//costruttore della struttura giocatore, riempi i campi del giocatore corrente,
+{								 //usata dal cosruttore della lista playerList
 	numero = num ;
 	position = 1 ;
 	strcpy_s(name , n) ;
@@ -25,23 +26,7 @@ PLAYER::~PLAYER()
 {
 }
 
-
-
-
-
-void PLAYER::setName(char newName[])
+void PLAYER::setName(char newName[])//riempie il campo del nome
 {
 	strcpy_s(name, newName);
 }
-
-
-bool PLAYER::getJmpTrn()
-{
-	return jumpTurn;
-}
-
-void PLAYER::setJmpTrn(bool set)
-{
-	jumpTurn = set;
-}
-

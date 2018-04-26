@@ -7,14 +7,8 @@
 #include <ctime>
 using namespace std;
 
-ptPLAYER playerList = NULL;
-
-int NUMERO_GIOCATORI = 1;
-
-int main() {
+int main() {//main
 	srand(time(NULL));
-	int drop;
 	ptGAME GIOCO= new GAME();
 	GIOCO->firstTurn();
-	drop = 0;
 }

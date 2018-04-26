@@ -12,13 +12,10 @@ typedef GAME* ptGAME;
 class GAME
 {
 protected:
-	
-public:
 	ptPLAYER playerList;
 	int NUMERO_GIOCATORI;
 	ptCard ptDeck;
 	ptTABLE ptTab;
-	GAME();
 	void addToPosition(int);
 	void Throw_Dice();
 	void tabTypeTranslate();
@@ -31,15 +28,16 @@ public:
 	void swapWithFirst();
 	void backToStart();
 	void skipTurn();
-	void doubleDice();
 	void createPlayerList();
 	void deletePlayerList();
 	void drawCard();
 	void createDeck();
 	void deleteDeck();
 	void printChart();
-	void firstTurn();
 	void nextTurn();
 	void endGame(bool);
+public:
+	GAME();
+	void firstTurn();
 };
 #endif
