@@ -5,7 +5,7 @@ class CARD;
 class PLAYER;
 
 typedef PLAYER* ptPLAYER;
-typedef CARD* ptCard;
+typedef CARD* ptCARD;
 
 #include "GAME.h"
 
@@ -13,7 +13,7 @@ typedef CARD* ptCard;
 class CARD : public GAME
 {
 public:
-	CARD *next;
+	ptCARD next;
 	int type ;
 	int randomCard();
 	CARD();

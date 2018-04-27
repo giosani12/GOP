@@ -7,7 +7,8 @@
 #include <ctime>
 using namespace std;
 
-int main() {//main
+int main()//main
+{
 	srand((unsigned int)time(NULL));
 	ptGAME GIOCO= new GAME();
 	GIOCO->firstTurn();

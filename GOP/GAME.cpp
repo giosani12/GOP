@@ -11,12 +11,12 @@ using namespace std;
 GAME::GAME() {
 }
 
-void GAME::Throw_Dice()//funzione del lancio dado
+void GAME::throwDice()//funzione del lancio dado
 {
 	int j = (rand() % 6) + 1;
 	playerList->position = playerList->position + j;
 	if (playerList->position > ptTab->lenght) playerList->position = ptTab->lenght;
-	cout << endl << playerList->name << " tira il dado ed esce " << j << ", ora " << playerList->name << " e\' in posizione " << playerList->position << ".";
+	cout << "\nIl giocatore " << playerList->name << " tira il dado ed esce " << j << ", ora " << playerList->name << " e\' in posizione " << playerList->position << ".";
 }
 
 void GAME::addToPosition(int num)//funzione utile per gli effetti di movimento sulla tabella, somma alla posione del giocatore il numero in input
@@ -61,7 +61,7 @@ void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 		break;
 	case 7:
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " tira due volte il dado";
-		Throw_Dice();
+		throwDice();
 		break;
 	case 8:
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " pesca una carta.";
@@ -100,7 +100,7 @@ void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 		break;
 	case 17:
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " tira due volte il dado";
-		Throw_Dice();
+		throwDice();
 		break;
 	case 18:
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " pesca una carta.";
@@ -140,7 +140,7 @@ void GAME::cardTypeTranslate()//chiamante per gli effetti del mazzo di carte
 		break;
 	case 6:
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " tira di nuovo il dado";
-		Throw_Dice();
+		throwDice();
 		break;
 	default:
 		cout << "INTERNAL_ERROR -Prego allontanarsi dal computer ";
@@ -180,13 +180,11 @@ void GAME::skipTurn()//salta il prossimo turno
 
 
 
-ptPLAYER * GAME::getFirst()//funzione che restituisce un array di puntatori al (o ai) giocatore primo in classifica 
+void GAME::getFirst(ptPLAYER *out)//funzione che restituisce un array di puntatori al (o ai) giocatore primo in classifica 
 {
 	int i, counter = 0, j = 0;
 	bool found = false;
 	ptPLAYER ptTMP = playerList;
-	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI + 1];
-	ptPLAYER *tmp;
 	for (i = ptTab->lenght; ((i > 0) && !found); i--)
 	{
 		for (int j = 0; j<NUMERO_GIOCATORI; j++)
@@ -207,24 +205,20 @@ ptPLAYER * GAME::getFirst()//funzione che restituisce un array di puntatori al (
 			playerList = playerList->next;
 		}
 	}
-	tmp = new ptPLAYER[counter];
-	for (i = 0; out[i] != NULL; i++) tmp[i] = out[i];
-	tmp[i] = NULL;
-	delete out;
 	playerList = ptTMP;
-	return tmp;
 }
 
 
 void GAME::swapWithFirst()//scambia la posizione del giocatore corrente con il primo e viceversa (funziona anche con più giocatori a pari merito)
 {
-	ptPLAYER *first;
-	first= getFirst();
+	ptPLAYER *first = new ptPLAYER[NUMERO_GIOCATORI + 1];
+	getFirst(first);
 	int temp = first[0]->position, i = 0;
 	while (first[i] != NULL) {
 		first[i]->position = playerList->position;
 		i++;
 	}
+	delete first;
 	playerList->position = temp;
 }
 
@@ -280,7 +274,7 @@ void GAME::drawCard()//pesca una carta casuale dal mazzo e ne esegue l'effetto.
 void GAME::createDeck()//Crea lista circolare di carte con testa in ptDeck
 {
 	ptDeck = new CARD();
-	ptCard tmp = ptDeck;
+	ptCARD tmp = ptDeck;
 	for (int i = 0; i < 40; i++) {
 		tmp->type = tmp->randomCard();
 		if (i < 39) {
@@ -293,7 +287,7 @@ void GAME::createDeck()//Crea lista circolare di carte con testa in ptDeck
 
 void GAME::deleteDeck()//Distrugge la sovrastante
 {
-	ptCard tmp;
+	ptCARD tmp;
 	for (int i = 0; i < NUMERO_GIOCATORI; i++) {
 		tmp = ptDeck->next;
 		delete ptDeck;
@@ -342,10 +336,10 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 	playerList = playerList->next;
 	if (!playerList->jumpTurn)
 	{
-		Throw_Dice();
+		throwDice();
 		if (playerList->position >= ptTab->lenght) endGame(true); //True quando il gioco finisce in modo normale
 		tabTypeTranslate();
-		if (playerList->position >= ptTab->lenght) endGame(true);
+		if (playerList->position >= ptTab->lenght) endGame(true); //True quando il gioco finisce in modo normale
 		drawCard();
 	}
 	else
@@ -354,7 +348,7 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 		playerList->jumpTurn = false;
 	}
 	ptTab->printTable();
-	if (playerList->position >= ptTab->lenght) endGame(true);
+	if (playerList->position >= ptTab->lenght) endGame(true); //True quando il gioco finisce in modo normale
 	printChart();
 	do {
 		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N (non case sensitive)\n";
