@@ -26,7 +26,7 @@ int TABLE::getType(int input)//traduttore da numero casella a tipo di casella
 	else return 8;
 }
 
-void TABLE::printTable()//stampa la tabella
+void TABLE::printTable()//stampa la tabella e il traduttore per i tipi di casella
 {
 	if (valid) {
 		cout << "\nFormato casella: |Numero Casella| Tipo Casella (vedi traduttore sottostante)|" << endl;
@@ -40,7 +40,7 @@ void TABLE::printTable()//stampa la tabella
 		if ((lenght % 14) != 0) cout << "|" << endl;
 	}
 	else {
-		cout << "WTF u doing there's no fucking TABLE to print DUMBASS" << endl;
+		cout << "\nNessuna tabella da stampare." << endl;
 	}
-	cout << "\nTraduttore:\n0-10=casellavuota\t	1-11=vai avanti di uno\t2-12=vai avanti di due\t3-13=vai indietro di 1\n4-14=vai indietro di 2\t5-15=ti scambi col primo giocatore\t6-16=salti il turno\n7-17=tiri di nuovo il dado\t8-18=pesca una carta\t9= torna all'inizio";
+	cout << "Traduttore:\n0=casella vuota\t	1=vai avanti di uno\t2=vai avanti di due\t3=vai indietro di 1\t4=vai indietro di 2\n5=ti scambi col primo giocatore\t\t\t6=salti il turno\t7=tiri di nuovo il dado\t8=pesca una carta\t9= torna all'inizio";
 }

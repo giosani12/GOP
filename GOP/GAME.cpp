@@ -178,12 +178,15 @@ void GAME::skipTurn()//salta il prossimo turno
 	playerList->jumpTurn = true;
 }
 
+
+
 ptPLAYER * GAME::getFirst()//funzione che restituisce un array di puntatori al (o ai) giocatore primo in classifica 
 {
 	int i, counter = 0, j = 0;
 	bool found = false;
 	ptPLAYER ptTMP = playerList;
-	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI+1], *tmp;
+	ptPLAYER *out = new ptPLAYER[NUMERO_GIOCATORI + 1];
+	ptPLAYER *tmp;
 	for (i = ptTab->lenght; ((i > 0) && !found); i--)
 	{
 		for (int j = 0; j<NUMERO_GIOCATORI; j++)
@@ -324,12 +327,12 @@ void GAME::printChart()//Stampa la lista dei giocatori ordinati per posizione in
 	cout << endl;
 }
 
-void GAME::firstTurn()//Esegue routine del primo turno inizializzando tutte i puntatori a giocatori, mazzo e tabella
+void GAME::firstTurn()//Inizializza la lista di giocatori, il mazzo e la tabella
 {
 	cout << "Questo e\' il gioco GOP per il progetto di programmazione\nInserire ora i dati per iniziare una partita:" << endl;
 	createPlayerList();
 	createDeck();
-	ptTab = new TABLE(rand() % 40 + 40);
+	ptTab = new TABLE(rand() % 20 + 55);
 	nextTurn();
 }
 
@@ -351,11 +354,10 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 		playerList->jumpTurn = false;
 	}
 	ptTab->printTable();
-	printChart();
 	if (playerList->position >= ptTab->lenght) endGame(true);
-	cout << "Vuoi finire la partita? ";
+	printChart();
 	do {
-		cout << "Se vuoi finire la partita scrivi Y, se vuoi continuare scrivi N\n";
+		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N (non case sensitive)\n";
 		cin >> loop;
 	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 	if ((loop == 'Y') || (loop == 'y')) endGame(false); //False quando il gioco è interrotto dall'utente
@@ -373,7 +375,7 @@ void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 		deleteDeck();
 		deletePlayerList();
 		do {
-			cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N";
+			cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N (non case sensitive)";
 			cin >> loop;
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 		if ((loop == 'Y') || (loop == 'y')) firstTurn();
@@ -385,7 +387,7 @@ void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 		deleteDeck();
 		deletePlayerList();
 		do {
-		cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N";
+		cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N (non case sensitive)";
 		cin >> loop;
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 		if ((loop == 'Y') || (loop == 'y')) firstTurn();
