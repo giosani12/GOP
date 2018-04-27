@@ -21,17 +21,19 @@ void GAME::throwDice()//funzione del lancio dado
 
 void GAME::addToPosition(int num)//funzione utile per gli effetti di movimento sulla tabella, somma alla posione del giocatore il numero in input
 {
-	if ((num + playerList->position) > 0) {
+	if ((num + playerList->position) > 0)
+	{
 		playerList->position = playerList->position + num;
 		if (playerList->position > ptTab->lenght) playerList->position = ptTab->lenght;
 	}
 	else playerList->position = 1;
 }
 
-
+//possiamo scambiare le varie forward e backward con chimate dirette di addToPosition
 void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 {
-	switch (ptTab->getType(playerList->position)) {
+	switch (ptTab->getType(playerList->position))
+	{
 	case 0:
 		cout << "\nEffetto casella: casella vuota!";
 		break;
@@ -113,7 +115,8 @@ void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 
 void GAME::cardTypeTranslate()//chiamante per gli effetti del mazzo di carte
 {
-	switch (ptDeck->type) {
+	switch (ptDeck->type)
+	{
 	case 0:
 		forwardByOne();
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
@@ -214,7 +217,8 @@ void GAME::swapWithFirst()//scambia la posizione del giocatore corrente con il p
 	ptPLAYER *first = new ptPLAYER[NUMERO_GIOCATORI + 1];
 	getFirst(first);
 	int temp = first[0]->position, i = 0;
-	while (first[i] != NULL) {
+	while (first[i] != NULL)
+	{
 		first[i]->position = playerList->position;
 		i++;
 	}
@@ -228,21 +232,24 @@ void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori 
 	char tmpName[20];
 	ptPLAYER tmp, ptHead;
 	tmpName[0] = '\0';
-	while (num < 1) {
+	while (num < 1)//da cambiare con do while come negli altri casi
+	{
 		cout << "Inserire numero giocatori: ";
 		cin >> num;
-		if (num < 1) {
-			cout << "\nNumero di giocatori invalido, riprova\n";
+		if (num < 1)
+		{
+			cout << "\nNumero di giocatori invalido, riprova ";
 		}
 	}
 	NUMERO_GIOCATORI = num;
 	cout << "\nInserire nome per giocatore " << i << ": ";
-	cin.getline(tmpName, 20, '\n');
-	cin.getline(tmpName, 20, '\n');
+	cin.getline(tmpName, 20, '\n');//questo non va bene, il problema è che sta leggendo il \n dell'input precedente
+	cin.getline(tmpName, 20, '\n');//o ci facciamo una funzione che lo fa o troviamo un altro modo(eventualmente possiamo passare alle stringhe)
 	playerList = new PLAYER(1, tmpName);
 	ptHead = playerList;
 	i++;
-	while (i <= num) {
+	while (i <= num)
+	{
 		cout << "\nInserire nome per giocatore " << i << ": ";
 		cin.getline(tmpName, 20, '\n');
 		tmp = new PLAYER(i, tmpName);
@@ -250,13 +257,14 @@ void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori 
 		playerList = tmp;
 		i++;
 	}
-	playerList->next = ptHead;
+	playerList->next = ptHead;//in uscita playerlist punta all'ultimo giocatore perchè il primo turno inizia con un playerlist=playerlist->next
 }
 
 void GAME::deletePlayerList()//Distrugge la lista di giocatori partendo dal puntatore al giocatore attuale
 {
 	ptPLAYER tmp;
-	for (int i = 0; i < NUMERO_GIOCATORI; i++) {
+	for (int i = 0; i < NUMERO_GIOCATORI; i++)
+	{
 		tmp = playerList->next;
 		delete playerList;
 		playerList = tmp;
@@ -275,9 +283,11 @@ void GAME::createDeck()//Crea lista circolare di carte con testa in ptDeck
 {
 	ptDeck = new CARD();
 	ptCARD tmp = ptDeck;
-	for (int i = 0; i < 40; i++) {
+	for (int i = 0; i < 40; i++)//lasciamo il mazzo fisso a 40 o rand anche qua?
+	{
 		tmp->type = tmp->randomCard();
-		if (i < 39) {
+		if (i < 39)
+		{
 			tmp->next = new CARD();
 			tmp = tmp->next;
 		}
@@ -288,7 +298,8 @@ void GAME::createDeck()//Crea lista circolare di carte con testa in ptDeck
 void GAME::deleteDeck()//Distrugge la sovrastante
 {
 	ptCARD tmp;
-	for (int i = 0; i < NUMERO_GIOCATORI; i++) {
+	for (int i = 0; i < NUMERO_GIOCATORI; i++)
+	{
 		tmp = ptDeck->next;
 		delete ptDeck;
 		ptDeck = tmp;
@@ -301,9 +312,10 @@ void GAME::printChart()//Stampa la lista dei giocatori ordinati per posizione in
 	bool found = false;
 	int pos = 0;
 	cout << "\nCLASSIFICA:\n|Posizione\t|Posizione in Tabella\t|Nome Giocatore";
-	for (int i = ptTab->lenght; i > 0; i--) {
-
-		for (int j = 0; j<NUMERO_GIOCATORI; j++) {
+	for (int i = ptTab->lenght; i > 0; i--)
+	{
+		for (int j = 0; j<NUMERO_GIOCATORI; j++)
+		{
 			if ((i == playerList->position) && !found)
 			{
 				pos = pos + 1;
@@ -363,7 +375,8 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 		return;
 	}
 	printChart();
-	do {
+	do
+	{
 		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N (non case sensitive)\n";
 		cin >> loop;
 	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
@@ -380,28 +393,32 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 {
 	char loop;
-	if (end) {
+	if (end)
+	{
 		cout << "\nLa partita e\' terminata, consulta qua sotto la classifica finale per scoprire il vincitore";
 		printChart();
 		delete ptTab;
 		deleteDeck();
 		deletePlayerList();
-		do {
+		do
+		{
 			cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N (non case sensitive)";
 			cin >> loop;
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 		if ((loop == 'Y') || (loop == 'y')) firstTurn();
 		else return;
 	}
-	else if (!end){
+	else if (!end)
+	{
 		cout << "\nLa partita e\' stata terminata, consulta qua sotto la classifica finale\n " ;
 		printChart();
 		delete ptTab;
 		deleteDeck();
 		deletePlayerList();
-		do {
-		cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N (non case sensitive)";
-		cin >> loop;
+		do 
+		{
+			cout << "Se vuoi ricominciare scrivi Y, se vuoi uscire scrivi N (non case sensitive)";
+			cin >> loop;
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 		if ((loop == 'Y') || (loop == 'y')) firstTurn();
 		else return;
