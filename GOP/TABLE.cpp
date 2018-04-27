@@ -42,4 +42,5 @@ void TABLE::printTable()//stampa la tabella
 	else {
 		cout << "WTF u doing there's no fucking TABLE to print DUMBASS" << endl;
 	}
+	cout << "\nTraduttore:\n0-10=casellavuota\t	1-11=vai avanti di uno\t2-12=vai avanti di due\t3-13=vai indietro di 1\n4-14=vai indietro di 2\t5-15=ti scambi col primo giocatore\t6-16=salti il turno\n7-17=tiri di nuovo il dado\t8-18=pesca una carta\t9= torna all'inizio";
 }
