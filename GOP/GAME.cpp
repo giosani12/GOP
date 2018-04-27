@@ -328,6 +328,7 @@ void GAME::firstTurn()//Inizializza la lista di giocatori, il mazzo e la tabella
 	createDeck();
 	ptTab = new TABLE(rand() % 20 + 55);
 	nextTurn();
+	return;
 }
 
 void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possibilita\' di uscire o ricominciare
@@ -337,9 +338,17 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 	if (!playerList->jumpTurn)
 	{
 		throwDice();
-		if (playerList->position >= ptTab->lenght) endGame(true); //True quando il gioco finisce in modo normale
+		if (playerList->position >= ptTab->lenght)
+		{
+			endGame(true); //True quando il gioco finisce in modo normale
+			return;
+		}
 		tabTypeTranslate();
-		if (playerList->position >= ptTab->lenght) endGame(true); //True quando il gioco finisce in modo normale
+		if (playerList->position >= ptTab->lenght)//True quando il gioco finisce in modo normale
+		{
+			endGame(true); //True quando il gioco finisce in modo normale
+			return;
+		}
 		drawCard();
 	}
 	else
@@ -348,14 +357,23 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 		playerList->jumpTurn = false;
 	}
 	ptTab->printTable();
-	if (playerList->position >= ptTab->lenght) endGame(true); //True quando il gioco finisce in modo normale
+	if (playerList->position >= ptTab->lenght)//True quando il gioco finisce in modo normale
+	{
+		endGame(true);
+		return;
+	}
 	printChart();
 	do {
 		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N (non case sensitive)\n";
 		cin >> loop;
 	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
-	if ((loop == 'Y') || (loop == 'y')) endGame(false); //False quando il gioco è interrotto dall'utente
+	if ((loop == 'Y') || (loop == 'y'))//False quando il gioco è interrotto dall'utente
+	{
+		endGame(false);
+		return;
+	}
 	else GAME::nextTurn();
+	return;
 }
 
 
@@ -373,6 +391,7 @@ void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 			cin >> loop;
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 		if ((loop == 'Y') || (loop == 'y')) firstTurn();
+		else return;
 	}
 	else if (!end){
 		cout << "\nLa partita e\' stata terminata, consulta qua sotto la classifica finale\n " ;
@@ -385,5 +404,6 @@ void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 		cin >> loop;
 		} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 		if ((loop == 'Y') || (loop == 'y')) firstTurn();
+		else return;
 	}
 }
