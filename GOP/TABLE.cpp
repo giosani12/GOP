@@ -9,7 +9,8 @@ TABLE::TABLE(int input)//costruttore tabella, inizializza tutti i campi e prende
 	lenght = input;
 	valid = true;
 	pt = new int[lenght];
-	for (int i = 0; i < lenght-1; i++)
+	pt[0] = 0;
+	for (int i = 1; i < lenght-1; i++)
 	{
 		pt[i] = rand() %19;
 	}
