@@ -212,15 +212,12 @@ void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori 
 	char tmpName[20];
 	ptPLAYER tmp, ptHead;
 	tmpName[0] = '\0';
-	while (num < 1)//da cambiare con do while come negli altri casi
+	do
 	{
-		cout << "Inserire numero giocatori: ";
+		cout << "\nInserire numero giocatori: ";
 		cin >> num;
-		if (num < 1)
-		{
-			cout << "\nNumero di giocatori invalido, riprova ";
-		}
-	}
+	} while (num < 1);
+
 	NUMERO_GIOCATORI = num;
 	cout << "\nInserire nome per giocatore " << i << ": ";
 	cin.getline(tmpName, 20, '\n');//questo non va bene, il problema è che sta leggendo il \n dell'input precedente
