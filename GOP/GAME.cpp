@@ -38,19 +38,19 @@ void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 		cout << "\nEffetto casella: casella vuota!";
 		break;
 	case 1:
-		forwardByOne();
+		addToPosition(1);
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
 		break;
 	case 2:
-		forwardByTwo();
+		addToPosition(2);
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato avanti di due caselle e ora e\' in posizione " << playerList->position;
 		break;
 	case 3:
-		backwardByOne();
+		addToPosition(-1);
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato indietro di una casella e ora e\' in posizione " << playerList->position;
 		break;
 	case 4:
-		backwardByTwo();
+		addToPosition(-2);
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
 		break;
 	case 5:
@@ -77,19 +77,19 @@ void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 		cout << "\nEffetto casella: casella vuota!";
 		break;
 	case 11:
-		forwardByOne();
+		addToPosition(1);
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
 		break;
 	case 12:
-		forwardByTwo();
+		addToPosition(2);
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato avanti di due caselle e ora e\' in posizione " << playerList->position;
 		break;
 	case 13:
-		backwardByOne();
+		addToPosition(-1);
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato indietro di una casella e ora e\' in posizione " << playerList->position;
 		break;
 	case 14:
-		backwardByTwo();
+		addToPosition(-2);
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
 		break;
 	case 15:
@@ -118,19 +118,19 @@ void GAME::cardTypeTranslate()//chiamante per gli effetti del mazzo di carte
 	switch (ptDeck->type)
 	{
 	case 0:
-		forwardByOne();
+		addToPosition(1);
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato avanti di una casella e ora e\' in posizione " << playerList->position;
 		break;
 	case 1:
-		forwardByTwo();
+		addToPosition(2);
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato avanti di due caselle e ora e\' in posizione " << playerList->position;
 		break;
 	case 2:
-		backwardByOne();
+		addToPosition(-1);
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato indietro di una casella e ora e\' in posizione " << playerList->position;
 		break;
 	case 3:
-		backwardByTwo();
+		addToPosition(-2);
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " e\' andato indietro di due caselle ed ora e\' in posizione " << playerList->position;
 		break;
 	case 4:
@@ -149,26 +149,6 @@ void GAME::cardTypeTranslate()//chiamante per gli effetti del mazzo di carte
 		cout << "INTERNAL_ERROR -Prego allontanarsi dal computer ";
 	}
 	ptDeck = ptDeck->next;
-}
-
-void GAME::forwardByTwo()//avanti di due
-{
-	addToPosition(2);
-}
-
-void GAME::forwardByOne()//avanti di uno
-{
-	addToPosition(1);
-}
-
-void GAME::backwardByTwo()//indietro di due
-{
-	addToPosition(-2);
-}
-
-void GAME::backwardByOne()//indietro di uno
-{
-	addToPosition(-1);
 }
 
 void GAME::backToStart()//effetto molto destabilizzante che reimposta la posizione del giocatore a 1
