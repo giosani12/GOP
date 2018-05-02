@@ -357,7 +357,7 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 	printChart();
 	do
 	{
-		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N.\nHai bisogno di aiuto? scrivi H (non case sensitive)\n";
+		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N, se bisogno di aiuto scrivi H (non case sensitive)\n";
 		cin >> loop;
 		if ((loop == 'H') || (loop == 'h'))
 		{
@@ -366,13 +366,16 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 			cout << "\nUn giocatore vince quando riesce ad arrivare in fondo al tabellone.";
 		}
 	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
-		if ((loop == 'Y') || (loop == 'y'))//False quando il gioco è interrotto dall'utente
-		{
-			endGame(false);
-			return;
-		}
-		else ((loop == 'N') || (loop == 'N'));
+	if ((loop == 'Y') || (loop == 'y'))//False quando il gioco è interrotto dall'utente
+	{
+		endGame(false);
+		return;
+	}
+	else if ((loop == 'N') || (loop == 'n'))
+	{
 		GAME::nextTurn();
+		return;
+	}
 	return;
 }
 
