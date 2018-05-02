@@ -30,7 +30,6 @@ void GAME::addToPosition(int num)//funzione utile per gli effetti di movimento s
 	else playerList->position = 1;
 }
 
-//possiamo scambiare le varie forward e backward con chimate dirette di addToPosition
 void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 {
 	switch (ptTab->getType(playerList->position))
@@ -59,7 +58,7 @@ void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
 		break;
 	case 6:
-		skipTurn();
+		playerList->jumpTurn = true;
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " saltera\' il prossimo turno";
 		break;
 	case 7:
@@ -71,7 +70,7 @@ void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 		cardTypeTranslate();
 		break;
 	case 9:
-		backToStart();
+		playerList->position = 1;
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " e\' tornato all'inizio ed ora e\' in posizione 1";
 		break;
 	case 10:
@@ -98,7 +97,7 @@ void GAME::tabTypeTranslate()//chiamante per gli effetti della tabella
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
 		break;
 	case 16:
-		skipTurn();
+		playerList->jumpTurn = true;
 		cout << "\nEffetto casella: il giocatore " << playerList->name << " saltera\' il prossimo turno";
 		break;
 	case 17:
@@ -139,7 +138,7 @@ void GAME::cardTypeTranslate()//chiamante per gli effetti del mazzo di carte
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " ha scambiato la sua posizione con il primo in classifica";
 		break;
 	case 5:
-		skipTurn();
+		playerList->jumpTurn = true;
 		cout << "\nEffetto carta: il giocatore " << playerList->name << " saltera\' il prossimo turno";
 		break;
 	case 6:
@@ -151,17 +150,6 @@ void GAME::cardTypeTranslate()//chiamante per gli effetti del mazzo di carte
 	}
 	ptDeck = ptDeck->next;
 }
-
-void GAME::backToStart()//effetto molto destabilizzante che reimposta la posizione del giocatore a 1
-{
-	playerList->position = 1;
-}
-
-void GAME::skipTurn()//salta il prossimo turno
-{
-	playerList->jumpTurn = true;
-}
-
 
 
 void GAME::getFirst(ptPLAYER *out)//funzione che restituisce un array di puntatori al (o ai) giocatore primo in classifica 
@@ -219,12 +207,10 @@ void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori 
 		cout << "\nInserire numero giocatori: ";
 		cin >> num;
 	} while (num < 1);
-
 	NUMERO_GIOCATORI = num;
 	cout << "\nInserire nome per giocatore " << i << ": ";
-	//std::getline(std::cin, tmpNameSTR);	//questo non va bene, il problema è che sta leggendo il \n dell'input precedente
+	cin.ignore(1, EOF);
 	cin.getline(tmpName, 20, '\n');
-	//cin.getline(tmpName, 20, '\n');			//o ci facciamo una funzione che lo fa o troviamo un altro modo(eventualmente possiamo passare alle stringhe)
 	playerList = new PLAYER(1, tmpName);
 	ptHead = playerList;
 	i++;
@@ -286,7 +272,7 @@ void GAME::deleteDeck()//Distrugge la sovrastante
 	}
 }
 
-void GAME::printChart()//Stampa la lista dei giocatori ordinati per posizione in classifica con altre info utili
+void GAME::printChart()//Stampa la lista dei giocatori ordinati per posizione
 {
 	ptPLAYER tmp = playerList;
 	bool found = false;
@@ -315,7 +301,11 @@ void GAME::printChart()//Stampa la lista dei giocatori ordinati per posizione in
 
 void GAME::firstTurn()//Inizializza la lista di giocatori, il mazzo e la tabella
 {
-	cout << "Questo e\' il gioco GOP per il progetto di programmazione\nInserire ora i dati per iniziare una partita:" << endl;
+	cout << "Questo e\' il gioco GOP per il progetto di programmazione";
+	cout << "\n\t\t\t\t\t\tREGOLE:";
+	cout << "\nAd ogni turno il giocatore tira il dado e si sposta sul tabellone in base al numero ottenuto, ogni casella ha ";
+	cout << "\nun effetto(traduzione sottostante) e ad ogni turno il giocatore pesca anche una carta, anch'essa con un effetto.";
+	cout << "\nUn giocatore vince quando riesce ad arrivare in fondo al tabellone.\n";
 	createPlayerList();
 	createDeck();
 	ptTab = new TABLE(rand() % 20 + 55);
@@ -336,7 +326,7 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 			return;
 		}
 		tabTypeTranslate();
-		if (playerList->position >= ptTab->lenght)//True quando il gioco finisce in modo normale
+		if (playerList->position >= ptTab->lenght)
 		{
 			endGame(true); //True quando il gioco finisce in modo normale
 			return;
@@ -361,7 +351,7 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 		cin >> loop;
 		if ((loop == 'H') || (loop == 'h'))
 		{
-			cout << "Ad ogni turno il giocatore tira il dado e si sposta sul tabellone in base al numero ottenuto, ogni casella ha ";
+			cout << "REGOLE:\nAd ogni turno il giocatore tira il dado e si sposta sul tabellone in base al numero ottenuto, ogni casella ha ";
 			cout << "\nun effetto(traduzione sottostante) e ad ogni turno il giocatore pesca anche una carta, anch'essa con un effetto.";
 			cout << "\nUn giocatore vince quando riesce ad arrivare in fondo al tabellone.";
 		}
@@ -385,7 +375,9 @@ void GAME::endGame(bool end)//Fa pulizia del gioco appena finito
 	char loop;
 	if (end)
 	{
-		cout << "\nLa partita e\' terminata, consulta qua sotto la classifica finale per scoprire il vincitore";
+		ptPLAYER *tmp = new ptPLAYER[1];
+		getFirst(tmp);
+		cout << "\nLa partita e\' terminata.\nIl giocatore " << tmp[0]->name << " ha vinto! Consulta qui sotto la classifica finale";
 		printChart();
 		delete ptTab;
 		deleteDeck();
