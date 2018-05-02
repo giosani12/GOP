@@ -20,10 +20,6 @@ protected:
 	void throwDice();
 	void tabTypeTranslate();
 	void cardTypeTranslate();
-	void forwardByTwo();
-	void forwardByOne();
-	void backwardByTwo();
-	void backwardByOne();
 	void getFirst(ptPLAYER*);
 	void swapWithFirst();
 	void backToStart();
