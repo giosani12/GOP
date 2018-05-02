@@ -49,6 +49,5 @@ void TABLE::printTable()//stampa la tabella e il traduttore per i tipi di casell
 		cout << "\nNessuna tabella da stampare." << endl;
 	}
 	cout << "Traduttore:\n0=casella vuota\t	1=vai avanti di uno\t2=vai avanti di due\t3=vai indietro di 1\t4=vai indietro di 2";
-	cout << "\n5=ti scambi col primo giocatore\t\t\t6=salti il turno\t7=tiri di nuovo il dado\t8=pesca una carta";
-	cout << "\n9=torna all'inizio";
+	cout << "\n5=scambia col primo\t6=salta il turno\t7=tira di nuovo il dado\t8=pesca una carta\t9=torna all'inizio";
 }

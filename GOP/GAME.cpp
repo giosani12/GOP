@@ -245,20 +245,23 @@ void GAME::drawCard()//pesca una carta casuale dal mazzo e ne esegue l'effetto.
 	ptDeck = ptDeck->next;
 }
 
-void GAME::createDeck()//Crea lista circolare di carte con testa in ptDeck
+void GAME::createDeck(int lenght)//Crea lista circolare di carte con testa in ptDeck
 {
 	ptDeck = new CARD();
 	ptCARD tmp = ptDeck;
-	for (int i = 0; i < 40; i++)//lasciamo il mazzo fisso a 40 o rand anche qua?
+	for (int i = 0; i < lenght; i++)
 	{
 		tmp->type = tmp->randomCard();
-		if (i < 39)
+		if (i < lenght-1)
 		{
 			tmp->next = new CARD();
 			tmp = tmp->next;
 		}
 	}
 	tmp->next = ptDeck;
+	cout << "\nE\' stato creato un mazzo di " << lenght << " carte.";
+	cout << "\nEffetti carte: vai avanti di uno, vai avanti di due, vai indietro di uno, vai indietro di due, scambia con primo in ";
+	cout << "\nclassifica, salta il turno e tira di nuovo il dado.";
 }
 
 void GAME::deleteDeck()//Distrugge la sovrastante
@@ -307,7 +310,7 @@ void GAME::firstTurn()//Inizializza la lista di giocatori, il mazzo e la tabella
 	cout << "\nun effetto(traduzione sottostante) e ad ogni turno il giocatore pesca anche una carta, anch'essa con un effetto.";
 	cout << "\nUn giocatore vince quando riesce ad arrivare in fondo al tabellone.\n";
 	createPlayerList();
-	createDeck();
+	createDeck(rand() % 20 + 35);
 	ptTab = new TABLE(rand() % 20 + 55);
 	nextTurn();
 	return;
@@ -347,13 +350,15 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 	printChart();
 	do
 	{
-		cout << "\nSe vuoi finire la partita scrivi Y, se vuoi continuare scrivi N, se bisogno di aiuto scrivi H (non case sensitive)\n";
+		cout << "Se vuoi finire la partita scrivi Y, se vuoi continuare scrivi N, se bisogno di aiuto scrivi H (non case sensitive)\n";
 		cin >> loop;
 		if ((loop == 'H') || (loop == 'h'))
 		{
 			cout << "REGOLE:\nAd ogni turno il giocatore tira il dado e si sposta sul tabellone in base al numero ottenuto, ogni casella ha ";
 			cout << "\nun effetto(traduzione sottostante) e ad ogni turno il giocatore pesca anche una carta, anch'essa con un effetto.";
 			cout << "\nUn giocatore vince quando riesce ad arrivare in fondo al tabellone.";
+			cout << "\nEffetti carte: vai avanti di uno, vai avanti di due, vai indietro di uno, vai indietro di due, scambia con primo in ";
+			cout << "\nclassifica, salta il turno e tira di nuovo il dado.";
 		}
 	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 	if ((loop == 'Y') || (loop == 'y'))//False quando il gioco è interrotto dall'utente

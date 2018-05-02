@@ -27,7 +27,7 @@ protected:
 	void createPlayerList();
 	void deletePlayerList();
 	void drawCard();
-	void createDeck();
+	void createDeck(int);
 	void deleteDeck();
 	void printChart();
 	void nextTurn();
