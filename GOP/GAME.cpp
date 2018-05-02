@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <string>
 #include "GAME.h"
 #include "CARD.h"
 #include "PLAYER.h"
@@ -210,6 +211,7 @@ void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori 
 {
 	int num = 0, i = 1;
 	char tmpName[20];
+	string tmpNameSTR;
 	ptPLAYER tmp, ptHead;
 	tmpName[0] = '\0';
 	do
@@ -220,8 +222,8 @@ void GAME::createPlayerList()//Inizializza il puntatore alla lista di giocatori 
 
 	NUMERO_GIOCATORI = num;
 	cout << "\nInserire nome per giocatore " << i << ": ";
-	cin.getline(tmpName, 20, '\n');//questo non va bene, il problema è che sta leggendo il \n dell'input precedente
-	cin.getline(tmpName, 20, '\n');//o ci facciamo una funzione che lo fa o troviamo un altro modo(eventualmente possiamo passare alle stringhe)
+	std::getline(std::cin, tmpNameSTR);	//questo non va bene, il problema è che sta leggendo il \n dell'input precedente
+	std::getline(std::cin, tmpNameSTR); //o ci facciamo una funzione che lo fa o troviamo un altro modo(eventualmente possiamo passare alle stringhe)
 	playerList = new PLAYER(1, tmpName);
 	ptHead = playerList;
 	i++;
