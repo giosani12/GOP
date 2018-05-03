@@ -358,7 +358,7 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 			cout << "\nun effetto(traduzione sottostante) e ad ogni turno il giocatore pesca anche una carta, anch'essa con un effetto.";
 			cout << "\nUn giocatore vince quando riesce ad arrivare in fondo al tabellone.";
 			cout << "\nEffetti carte: vai avanti di uno, vai avanti di due, vai indietro di uno, vai indietro di due, scambia con primo in ";
-			cout << "\nclassifica, salta il turno e tira di nuovo il dado.";
+			cout << "\nclassifica, salta il turno e tira di nuovo il dado.\n";
 		}
 	} while (loop != 'Y' && loop != 'y' && loop != 'N' && loop != 'n');
 	if ((loop == 'Y') || (loop == 'y'))//False quando il gioco è interrotto dall'utente
