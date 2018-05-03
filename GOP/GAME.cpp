@@ -366,11 +366,11 @@ void GAME::nextTurn()//Esegue la routine di un turno standard offrendo la possib
 		endGame(false);
 		return;
 	}
-	else if ((loop == 'N') || (loop == 'n'))
-	{
+	else// if ((loop == 'N') || (loop == 'n'))
+	//{
 		GAME::nextTurn();
-		return;
-	}
+	//	return;
+	//}
 	return;
 }
 

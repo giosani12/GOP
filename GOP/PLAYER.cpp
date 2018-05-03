@@ -5,16 +5,15 @@
 #include "PLAYER.h"
 #include "GAME.h"
 #include "TABLE.h"
-using namespace std;
 
+using namespace std;
 
 PLAYER::PLAYER()
 {
 }
 
-
 PLAYER::PLAYER(int num, char n[])//costruttore della struttura giocatore, riempi i campi del giocatore corrente,
-{								 //usata dal cosruttore della lista playerList
+{								 //usata dal costruttore della lista playerList
 	numero = num ;
 	position = 1 ;
 	strcpy_s(name , n) ;
